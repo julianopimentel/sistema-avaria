@@ -19,7 +19,7 @@
   <body class="bg-light">
 
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-      <a class="navbar-brand mr-auto mr-lg-0" href="#">Offcanvas navbar</a>
+      <a class="navbar-brand mr-auto mr-lg-0" href="#">DeskApps</a>
       <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -74,8 +74,61 @@
         <h6 class="border-bottom border-gray pb-2 mb-0">Cadastro</h6>
        <div class="col-8">
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="produto" role="tabpanel" aria-labelledby="list-home-list">
-              <p>Velit aute mollit ipsum ad dolor consectetur nulla officia culpa adipisicing exercitation fugiat tempor. Voluptate deserunt sit sunt nisi aliqua fugiat proident ea ut. Mollit voluptate reprehenderit occaecat nisi ad non minim tempor sunt voluptate consectetur exercitation id ut nulla. Ea et fugiat aliquip nostrud sunt incididunt consectetur culpa aliquip eiusmod dolor. Anim ad Lorem aliqua in cupidatat nisi enim eu nostrud do aliquip veniam minim.</p>
+            <div class="tab-pane fade show active" id="produto" role="tabpanel" aria-labelledby="list-home-list"><div class="container">
+		<fieldset>
+			<legend><h1>Cadastro de Produtos</h1></legend>
+			
+			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+				<div class="row">
+					<label for="nome">Selecionar Foto</label>
+			      	<div class="col-md-2">
+					    <a href="#" class="thumbnail">
+					      <img src="fotos/padrao.jpg" height="190" width="150" id="foto-cliente">
+					    </a>
+				  	</div>
+				  	<input type="file" name="foto" id="foto" value="foto" >
+			  	</div>
+
+			    <div class="form-group">
+			      <label for="nome">Máquina</label>
+			      <input type="text" class="form-control" id="maquina" name="maquina" placeholder="Infome o Nnome da máquina.">
+			      <span class="msg-erro msg-nome"></span>
+			    </div>
+
+			    <div class="form-group">
+			      <label for="modelo">Modelo</label>
+			      <input type="modelo" class="form-control" id="modelo" name="modelo" placeholder="Informe o modelo">
+			      <span class="msg-erro msg-modelo"></span>
+			    </div>
+
+			    <div class="form-group">
+			      <label for="ip">IP</label>
+			      <input type="ip" class="form-control" id="ip" maxlength="20" name="ip" placeholder="Informe o IP">
+			      <span class="msg-erro msg-ip"></span>
+			    </div>
+			    <div class="form-group">
+			      <label for="data_nascimento">Garantia</label>
+			      <input type="data_nascimento" class="form-control" id="garantia" maxlength="10" name="garantia">
+			      <span class="msg-erro msg-data"></span>
+			    </div>
+			    <div class="form-group">
+			      <label for="status">Status</label>
+			      <select class="form-control" name="status" id="status">
+				    <option value="">Selecione o Status</option>
+				    <option value="Ativo">Ativo</option>
+				    <option value="Inativo">Inativo</option>
+				  </select>
+				  <span class="msg-erro msg-status"></span>
+			    </div>
+
+			    <input type="hidden" name="acao" value="incluir">
+			    <button type="submit" class="btn btn-primary" id="botao"> 
+			      Gravar
+			    </button>
+			    <a href="index.php" class="btn btn-danger">Cancelar</a>
+			</form>
+		</fieldset>
+	</div>
             </div>
             <div class="tab-pane fade" id="fornecedor" role="tabpanel" aria-labelledby="list-profile-list">
               <p>Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.</p>
