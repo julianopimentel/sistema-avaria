@@ -8,14 +8,7 @@ require 'funcoes/init.php';
 			INNER JOIN empresa ON avaria.cod_empresa = empresa.id_empresa
 			INNER JOIN estoque ON avaria.cod_estoque = estoque.id_estoque
 			INNER JOIN situacao_avaria ON avaria.cod_situacao = situacao_avaria.id_situacao
-			INNER JOIN login ON avaria.cadastro_avaria_cod = login.id_login WHERE 
-			codigo_erp LIKE :codigo_erp OR 
-			descricao_produto LIKE :descricao_produto OR 
-			descricao_estoque LIKE :descricao_estoque OR 
-			descricao_empresa LIKE :descricao_empresa OR
-			descricao_situacao LIKE :descricao_situacao OR
-			nome LIKE :nome OR 
-			descricao_tipoavaria LIKE :descricao_tipoavaria';
+			INNER JOIN login ON avaria.cadastro_avaria_cod = login.id_login';
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
 	$clientes = $stmt->fetchAll(PDO::FETCH_OBJ);
