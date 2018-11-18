@@ -19,7 +19,7 @@
     <link href="css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="css/vendor/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/vendor/font-awesome.css" rel="stylesheet" type="text/css">
 
   </head>
 
