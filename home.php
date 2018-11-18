@@ -111,11 +111,11 @@ require 'funcoes/init.php';
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><?php echo '' . $totalprodutos;?></div>
-                                    <div>produtos</div>
+                                    <div>Produtos</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="cadastro.php">
+                        <a href="produto.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
