@@ -2,19 +2,32 @@
 require 'funcoes/init.php';
 
 	$PDO = db_connect();
-	$sql = 'SELECT id FROM users;';	
+	$sql = 'SELECT id_produto FROM produto;';
+	$stmt = $PDO->prepare($sql);
+	$stmt->execute();
+	$produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$totalprodutos = count($produtos); 
+
+	$PDO = db_connect();
+	$sql = 'SELECT id_login FROM login;';	
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
 	$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	$totalusuarios = count($usuarios); 
 
 	$PDO = db_connect();
-	$sql = 'SELECT id_produto FROM produto;';
+	$sql = 'SELECT id_avaria FROM avaria;';
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
-	$produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	$totalprodutos = count($usuarprodutosios); 
+	$avarias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$totalavarias = count($avarias); 
 
+	$PDO = db_connect();
+	$sql = 'SELECT id_avaria, situacao_avaria.descricao_situacao FROM avaria INNER JOIN situacao_avaria ON avaria.id_avaria = situacao_avaria.id_situacao WHERE id_avaria IN (2);';
+	$stmt = $PDO->prepare($sql);
+	$stmt->execute();
+	$pedencias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$totalpendencias = count($pendencias); 
 ?>
 <!doctype html>
 <html lang="en">
@@ -101,7 +114,7 @@ require 'funcoes/init.php';
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo '' . $totalprodutos;?>0</div>
+                                    <div class="huge"><?php echo '' . $totalprodutos;?></div>
                                     <div>Produtos!</div>
                                 </div>
                             </div>
@@ -147,7 +160,7 @@ require 'funcoes/init.php';
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
+                                    <div class="huge"><?php echo '' . $totalavarias;?></div>
                                     <div>Avarias</div>
                                 </div>
                             </div>
@@ -169,7 +182,7 @@ require 'funcoes/init.php';
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
+                                    <div class="huge"><?php echo '' . $totalpendencias;?></div>
                                     <div>Pendências</div>
                                 </div>
                             </div>
