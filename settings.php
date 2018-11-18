@@ -2,9 +2,6 @@
 require 'funcoes/init.php';
 
 	$PDO = db_connect();
-
-	// Executa uma consulta baseada no termo de pesquisa passado como parâmetro
-	$conexao = conexao::getInstance();
 	$sql = 'SELECT * FROM avaria
 			INNER JOIN produto ON avaria.cod_produto = produto.codigo_erp
 			INNER JOIN tipo_avaria ON avaria.cod_tipoavaria = tipo_avaria.id_tipoavaria
@@ -19,7 +16,7 @@ require 'funcoes/init.php';
 			descricao_situacao LIKE :descricao_situacao OR
 			nome LIKE :nome OR 
 			descricao_tipoavaria LIKE :descricao_tipoavaria';
-	$stm = $conexao->prepare($sql);
+	$stm = $PDO->prepare($sql);
 	$stm->bindValue(':codigo_erp', $termo.'%');
 	$stm->bindValue(':descricao_produto', $termo.'%');
 	$stm->bindValue(':descricao_estoque', $termo.'%');
