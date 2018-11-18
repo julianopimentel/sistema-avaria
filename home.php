@@ -111,7 +111,7 @@ require 'funcoes/init.php';
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><?php echo '' . $totalprodutos;?></div>
-                                    <div>Produtos</div>
+                                    <div>produtos</div>
                                 </div>
                             </div>
                         </div>
