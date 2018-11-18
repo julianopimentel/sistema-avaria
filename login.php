@@ -30,8 +30,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
  
 if (count($users) <= 0)
 {
-    echo "Email ou senha incorretos";
-    exit;
+   header('location: index.php/?login=error');
 }
  
 // pega o primeiro usuário
@@ -42,4 +41,4 @@ $_SESSION['logged_in'] = true;
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['user_name'] = $user['name'];
  
-header('Location: index.php');
+header('Location: panel.php');
