@@ -127,7 +127,7 @@ require 'funcoes/init.php';
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                    	<?php echo ($usuario);?>
+                                    	<?php echo $usuario;?>
                                     	</div>
                                     <div>Usuários</div>
                                 </div>
