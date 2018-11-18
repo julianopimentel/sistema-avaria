@@ -31,6 +31,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if (count($users) == 0)
 {
    header('location: index.php?login=error');
+   exit;
 }
  
 // pega o primeiro usuário
