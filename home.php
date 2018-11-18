@@ -1,5 +1,8 @@
 <?php
-require 'funcoes/init.php';
+session_start();
+ 
+require_once 'funcoes/init.php';
+require 'funcoes/check.php';
 
 	$PDO = db_connect();
 	$sql = 'SELECT id_produto FROM produto;';
@@ -83,7 +86,7 @@ require 'funcoes/init.php';
             <a class="nav-link" href="relatorios.php">Relatórios</a>
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="relatorios.php">Configurações</a>
+            <a class="nav-link" href="settings.php">Configurações</a>
           </li>
             <li class="nav-item">
             <a class="nav-link" href="funcao/logout.php">Sair</a>
