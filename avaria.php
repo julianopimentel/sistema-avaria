@@ -16,9 +16,9 @@ require 'funcoes/init.php';
 			descricao_situacao LIKE :descricao_situacao OR
 			nome LIKE :nome OR 
 			descricao_tipoavaria LIKE :descricao_tipoavaria';
-	$stm = $PDO->prepare($sql);
-	$stm->execute();
-	$clientes = $stm->fetchAll(PDO::FETCH_OBJ);
+	$stmt = $PDO->prepare($sql);
+	$stmt->execute();
+	$clientes = $stmt->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 
