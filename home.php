@@ -14,6 +14,13 @@
 
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="css/vendor/font-awesome.min.css" rel="stylesheet" type="text/css">
+
   </head>
 
   <body class="bg-light">
@@ -163,7 +170,7 @@
             </div>
            
 
-           
+
           </div>
         </div>
         </div>
