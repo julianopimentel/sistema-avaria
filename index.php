@@ -28,9 +28,10 @@
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit" value="Entrar">Logar</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
-           <?php if(isset($_GET["login"]) == "error"){ ?>
+        <?php if(isset($_GET["login"]) == "error"){ ?>
         <div class="alert alert-danger alert-block alert-aling" role="alert">Ops! E-mail ou Senha estão errado</div>
         <?php } ?>
+    </form>
+
   </body>
 </html>                
