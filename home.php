@@ -71,10 +71,9 @@
 
     <main role="main" class="container">
       <div class="my-3 p-3 bg-white rounded shadow-sm">
-       <div class="col-8">
+       <div class="col">
           <div class="tab-content" id="nav-tabContent">
            	
-           	<center>
             <div class="tab-pane fade show active" id="produto" role="tabpanel" aria-labelledby="list-home-list">
 			<fieldset>
 			<legend><h1>Cadastro de Produtos</h1></legend>
