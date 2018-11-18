@@ -16,9 +16,9 @@ require 'funcoes/init.php';
 			descricao_situacao LIKE :descricao_situacao OR
 			nome LIKE :nome OR 
 			descricao_tipoavaria LIKE :descricao_tipoavaria';
-	$stm = $PDO->prepare($sql);
-	$stm->execute();
-	$clientes = $stm->fetchAll(PDO::FETCH_OBJ);
+	$stmt = $PDO->prepare($sql);
+	$stmt->execute();
+	$clientes = $stmt->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 
@@ -98,7 +98,7 @@ require 'funcoes/init.php';
 		<fieldset>
 
 			<!-- Cabeçalho da Listagem -->
-			<legend><h1>Listagem de Produtos com Avaria - COCIL</h1></legend>
+			<legend><h1>Empresa</h1></legend>
 				<?php if(!empty($clientes)):?>
 
 				<!-- Tabela de Clientes -->
