@@ -6,6 +6,13 @@ require 'funcoes/init.php';
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
 	$empresa = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+	$PDO = db_connect();
+	$sql = 'SELECT * FROM login';
+	$stmt = $PDO->prepare($sql);
+	$stmt->execute();
+	$usuario = $stmt->fetchAll(PDO::FETCH_OBJ);
+
 ?>
 
 
@@ -150,22 +157,41 @@ require 'funcoes/init.php';
 
             <div class="tab-pane fade" id="usuario" role="tabpanel" aria-labelledby="list-messages-list">
 			<fieldset>
+			<!-- Cabeçalho da Listagem -->
 			<legend><h1>Usuários</h1></legend>
-			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+				<?php if(!empty($usuario)):?>
 
-			    <div class="form-group">
-			      <label for="nome">Tipos de Avaria</label>
-			      <input type="text" class="form-control" id="descricao_tipoavaria" name="descricao_tipoavaria" placeholder="Infome o novo tipo de Avaria.">
-			      <span class="msg-erro msg-nome"></span>
-			    </div>
+				<!-- Tabela de Clientes -->
+				<table class="table table-striped">
+					<tr class='active'>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Sobrenome</th>
+						<th>E-Mail</th>
+						<th>Situação</th>
+						<th>Nível</th>
+						<th>Ação</th>
+					</tr>
+					<?php foreach($usuario as $usuario):?>
+						<tr>
+							<td><?=$usuario->id_login?></td>
+							<td><?=$usuario->nome?></td>
+							<td><?=$usuario->sobrenome?></td>
+							<td><?=$usuario->email?></td>
+							<td><?=$usuario->situacao?></td>
+							<td><?=$usuario->nivel?></td>
+							<td>
+								<a href='info.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">+Info</a>
+								<a href='editar.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Editar</a>
+							</td>
+						</tr>	
+					<?php endforeach;?>
+				</table>
+				<?php else: ?>
 
-			    <input type="hidden" name="acao" value="incluir_tipoavaria">
-			    <button type="submit" class="btn btn-primary" id="botao"> 
-			      Gravar
-			    </button>
-			</form>
-		</fieldset>
+				<!-- Mensagem caso não exista clientes ou não encontrado  -->
+				<h3 class="text-center text-primary">Não encontrada, contactar o suporte!</h3>
+			<?php endif; ?>
             </div>
             <div class="tab-pane fade" id="permissoes" role="tabpanel" aria-labelledby="list-settings-list">
              
