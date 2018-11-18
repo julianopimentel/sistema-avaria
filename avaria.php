@@ -1,4 +1,11 @@
 <?php
+session_start();
+ 
+require_once 'funcoes/init.php';
+require 'funcoes/check.php';
+
+?>
+<?php
 require 'funcoes/init.php';
 
 	$PDO = db_connect();
@@ -63,10 +70,10 @@ require 'funcoes/init.php';
             <a class="nav-link" href="relatorios.php">Relatórios</a>
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="relatorios.php">Configurações</a>
+            <a class="nav-link" href="settings.php">Configurações</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link" href="funcao/logout.php">Sair</a>
+            <a class="nav-link" href="logout.php">Sair</a>
           </li>
         </ul>
       </div>

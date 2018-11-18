@@ -89,7 +89,7 @@ require 'funcoes/check.php';
             <a class="nav-link" href="settings.php">Configurações</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link" href="funcao/logout.php">Sair</a>
+            <a class="nav-link" href="logout.php">Sair</a>
           </li>
         </ul>
       </div>
