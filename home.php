@@ -26,14 +26,14 @@
 
       <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">Dashboard</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="index.php">Dashboard<span class="sr-only">(current)</span></a>
           </li>
 		<li class="nav-item">
             <a class="nav-link" href="avaria.php">Avarias</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="cadastro.php">Cadastro<span class="sr-only">(current)</span></a>
+          <li class="nav-item ">
+            <a class="nav-link" href="cadastro.php">Cadastro</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="relatorios.php">Relatórios</a>
@@ -58,148 +58,112 @@
       </div>
     </nav>
 
-    <div class="nav-scroller bg-white shadow-sm">
-      <nav class="nav nav-underline">
-        <a class="nav-link active" href="index.php">Dashboard</a>
-        <a class="nav-link" data-toggle="tab" href="#produto" role="produto">Produto</a>
-        <a class="nav-link" data-toggle="tab" href="#fornecedor" role="fornecedor">Fornecedor</a>
-        <a class="nav-link" data-toggle="tab" href="#tipoavaria" role="tipoavaria">Tipo de Avaria</a>
-        <a class="nav-link" data-toggle="tab" href="#estoque" role="estoque">Estoque</a>
-      </nav>
-    </div>
-
     <main role="main" class="container">
       <div class="my-5 p-5 bg-white rounded shadow-sm">
        <div class="col">
           <div class="tab-content" id="nav-tabContent">
            	
-            <div class="tab-pane fade show active" id="produto" role="tabpanel" aria-labelledby="list-home-list">
-			<fieldset>
-			<legend><h1>Cadastro de Produtos</h1></legend>
-			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
-				<div class="row">
-					<label for="nome">Selecionar Foto</label>
-			      	<div class="col-md-2">
-					    <a href="#" class="thumbnail">
-					      <img src="img/padrao.jpg" height="190" width="150" id="foto-cliente">
-					    </a>
-				  	</div>
-				  	<input type="file" name="foto" id="foto" value="foto" >
-			  	</div>
-
-			    <div class="form-group">
-			      <label for="nome">Descrição do produto</label>
-			      <input type="text" class="form-control" id="maquina" name="maquina" placeholder="Infome a descrição do produto">
-			      <span class="msg-erro msg-nome"></span>
-			    </div>
-			    <div class="form-group">
-			      <label for="modelo">Código ERP</label>
-			      <input type="modelo" class="form-control" id="modelo" name="modelo" placeholder="Informe o código do seu ERP">
-			      <span class="msg-erro msg-modelo"></span>
-			    </div>
-			      <div class="form-group">
-			      <label for="modelo">Código Fornecedor (Opcional)</label>
-			      <input type="modelo" class="form-control" id="modelo" name="modelo" placeholder="Informe o código do Fornecedor">
-			      <span class="msg-erro msg-modelo"></span>
-			    </div>
-			    <div class="form-group">
-			      <label for="ip">Fornecedores (Opcional)</label>
-			      <input type="ip" class="form-control" id="ip" maxlength="20" name="ip" placeholder="Informe o Forecedor">
-			      <span class="msg-erro msg-ip"></span>
-			    </div>
-			    <div class="form-group">
-			      <label for="status">Situação (Opcional)</label>
-			      <select class="form-control" name="status" id="status">
-				    <option value="">Selecione o Status</option>
-				    <option value="Ativo">Ativo</option>
-				    <option value="Inativo">Inativo</option>
-				  </select>
-			    </div>
-			    <input type="hidden" name="acao" value="incluir">
-			    <button type="submit" class="btn btn-primary" id="botao">Gravar</button>
-			</form>
-			</fieldset>
+           <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dashboard</h1>
+                </div>
+                <!-- /.col-lg-12 -->
             </div>
-
-            <div class="tab-pane fade" id="fornecedor" role="tabpanel" aria-labelledby="list-profile-list">
- 			<fieldset>
-			<legend><h1>Cadastro de Fornecedores</h1></legend>
-			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
-
-			    <div class="form-group">
-			      <label for="nome">Fornecedor</label>
-			      <input type="text" class="form-control" id="descricao_fornecedor" name="descricao_fornecedor" placeholder="Infome o Fornecedor.">
-			      <span class="msg-erro msg-nome"></span>
-			    </div>
-
-			    <div class="form-group">
-			      <label for="status">Status</label>
-			      <select class="form-control" name="status" id="status">
-				    <option value="">Selecione o Status</option>
-				    <option value="Ativo">Ativo</option>
-				    <option value="Inativo">Inativo</option>
-				  </select>
-				  <span class="msg-erro msg-status"></span>
-			    </div>
-
-			    <input type="hidden" name="acao" value="incluir_fornecedor">
-			    <button type="submit" class="btn btn-primary" id="botao"> 
-			      Gravar
-			    </button>
-			</form>
-		</fieldset>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">26</div>
+                                    <div>New Comments!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">12</div>
+                                    <div>New Tasks!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">124</div>
+                                    <div>New Orders!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">13</div>
+                                    <div>Support Tickets!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="tab-pane fade" id="tipoavaria" role="tabpanel" aria-labelledby="list-messages-list">
-			<fieldset>
-			<legend><h1>Cadastro de Tipos de Avarias</h1></legend>
-			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+           
 
-			    <div class="form-group">
-			      <label for="nome">Tipos de Avaria</label>
-			      <input type="text" class="form-control" id="descricao_tipoavaria" name="descricao_tipoavaria" placeholder="Infome o novo tipo de Avaria.">
-			      <span class="msg-erro msg-nome"></span>
-			    </div>
-
-			    <input type="hidden" name="acao" value="incluir_tipoavaria">
-			    <button type="submit" class="btn btn-primary" id="botao"> 
-			      Gravar
-			    </button>
-			</form>
-		</fieldset>
-            </div>
-            <div class="tab-pane fade" id="estoque" role="tabpanel" aria-labelledby="list-settings-list">
-              <fieldset>
-			<legend><h1>Cadastro de Estoques</h1></legend>
-			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
-
-			    <div class="form-group">
-			      <label for="nome">Local de Estoque</label>
-			      <input type="text" class="form-control" id="descricao_estoque" name="descricao_estoque" placeholder="Infome o novo Local de Estoque.">
-			      <span class="msg-erro msg-nome"></span>
-			    </div>
-
-			    <div class="form-group">
-			      <label for="status">Status</label>
-			      <select class="form-control" name="status" id="status">
-				    <option value="">Selecione o Status</option>
-				    <option value="Ativo">Ativo</option>
-				    <option value="Inativo">Inativo</option>
-				  </select>
-				  <span class="msg-erro msg-status"></span>
-			    </div>
-
-			    <input type="hidden" name="acao" value="incluir_estoque">
-			    <button type="submit" class="btn btn-primary" id="botao"> 
-			      Gravar
-			    </button>
-			</form>
-			</fieldset>
-            </div>
-            </div>
+           
           </div>
         </div>
         </div>
