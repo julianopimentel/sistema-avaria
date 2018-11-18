@@ -15,6 +15,9 @@
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
 
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- MetisMenu CSS -->
     <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
