@@ -90,36 +90,33 @@
 			  	</div>
 
 			    <div class="form-group">
-			      <label for="nome">Máquina</label>
+			      <label for="nome">Descrição do produto</label>
 			      <input type="text" class="form-control" id="maquina" name="maquina" placeholder="Infome o Nnome da máquina.">
 			      <span class="msg-erro msg-nome"></span>
 			    </div>
-
 			    <div class="form-group">
-			      <label for="modelo">Modelo</label>
+			      <label for="modelo">Código ERP</label>
 			      <input type="modelo" class="form-control" id="modelo" name="modelo" placeholder="Informe o modelo">
 			      <span class="msg-erro msg-modelo"></span>
 			    </div>
-
+			      <div class="form-group">
+			      <label for="modelo">Código Fornecedor</label>
+			      <input type="modelo" class="form-control" id="modelo" name="modelo" placeholder="Informe o modelo">
+			      <span class="msg-erro msg-modelo"></span>
+			    </div>
 			    <div class="form-group">
-			      <label for="ip">IP</label>
+			      <label for="ip">Fabricante</label>
 			      <input type="ip" class="form-control" id="ip" maxlength="20" name="ip" placeholder="Informe o IP">
 			      <span class="msg-erro msg-ip"></span>
 			    </div>
 			    <div class="form-group">
-			      <label for="data_nascimento">Garantia</label>
-			      <input type="data_nascimento" class="form-control" id="garantia" maxlength="10" name="garantia">
-			      <span class="msg-erro msg-data"></span>
-			    </div>
-			    <div class="form-group">
-			      <label for="status">Status</label>
+			      <label for="status">Situação</label>
 			      <select class="form-control" name="status" id="status">
 				    <option value="">Selecione o Status</option>
 				    <option value="Ativo">Ativo</option>
 				    <option value="Inativo">Inativo</option>
 				  </select>
 			    </div>
-
 			    <input type="hidden" name="acao" value="incluir">
 			    <button type="submit" class="btn btn-primary" id="botao">Gravar</button>
 			</form>
