@@ -18,7 +18,7 @@ $passwordHash = make_hash($password);
  
 $PDO = db_connect();
  
-$sql = "SELECT id, name FROM users WHERE email = :email AND password = :password";
+$sql = "SELECT id_login, nome FROM login WHERE email = :email AND senha = :password";
 $stmt = $PDO->prepare($sql);
  
 $stmt->bindParam(':email', $email);
