@@ -124,13 +124,84 @@
             </div>
 
             <div class="tab-pane fade" id="fornecedor" role="tabpanel" aria-labelledby="list-profile-list">
-              <p>Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.</p>
+ 			<fieldset>
+			<legend><h1>Cadastro de Fornecedores</h1></legend>
+			
+			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+
+			    <div class="form-group">
+			      <label for="nome">Fornecedor</label>
+			      <input type="text" class="form-control" id="descricao_fornecedor" name="descricao_fornecedor" placeholder="Infome o Fornecedor.">
+			      <span class="msg-erro msg-nome"></span>
+			    </div>
+
+			    <div class="form-group">
+			      <label for="status">Status</label>
+			      <select class="form-control" name="status" id="status">
+				    <option value="">Selecione o Status</option>
+				    <option value="Ativo">Ativo</option>
+				    <option value="Inativo">Inativo</option>
+				  </select>
+				  <span class="msg-erro msg-status"></span>
+			    </div>
+
+			    <input type="hidden" name="acao" value="incluir_fornecedor">
+			    <button type="submit" class="btn btn-primary" id="botao"> 
+			      Gravar
+			    </button>
+			    <a href="index.php" class="btn btn-danger">Cancelar</a>
+			</form>
+		</fieldset>
             </div>
             <div class="tab-pane fade" id="tipoavaria" role="tabpanel" aria-labelledby="list-messages-list">
-              <p>Ut ut do pariatur aliquip aliqua aliquip exercitation do nostrud commodo reprehenderit aute ipsum voluptate. Irure Lorem et laboris nostrud amet cupidatat cupidatat anim do ut velit mollit consequat enim tempor. Consectetur est minim nostrud nostrud consectetur irure labore voluptate irure. Ipsum id Lorem sit sint voluptate est pariatur eu ad cupidatat et deserunt culpa sit eiusmod deserunt. Consectetur et fugiat anim do eiusmod aliquip nulla laborum elit adipisicing pariatur cillum.</p>
+			<fieldset>
+			<legend><h1>Cadastro de Tipos de Avarias</h1></legend>
+			
+			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+
+			    <div class="form-group">
+			      <label for="nome">Tipos de Avaria</label>
+			      <input type="text" class="form-control" id="descricao_tipoavaria" name="descricao_tipoavaria" placeholder="Infome o novo tipo de Avaria.">
+			      <span class="msg-erro msg-nome"></span>
+			    </div>
+
+			    <input type="hidden" name="acao" value="incluir_tipoavaria">
+			    <button type="submit" class="btn btn-primary" id="botao"> 
+			      Gravar
+			    </button>
+			    <a href="index.php" class="btn btn-danger">Cancelar</a>
+			</form>
+		</fieldset>
             </div>
             <div class="tab-pane fade" id="estoque" role="tabpanel" aria-labelledby="list-settings-list">
-              <p>Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure.</p>
+              <fieldset>
+			<legend><h1>Cadastro de Estoques</h1></legend>
+			
+			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+
+			    <div class="form-group">
+			      <label for="nome">Local de Estoque</label>
+			      <input type="text" class="form-control" id="descricao_estoque" name="descricao_estoque" placeholder="Infome o novo Local de Estoque.">
+			      <span class="msg-erro msg-nome"></span>
+			    </div>
+
+			    <div class="form-group">
+			      <label for="status">Status</label>
+			      <select class="form-control" name="status" id="status">
+				    <option value="">Selecione o Status</option>
+				    <option value="Ativo">Ativo</option>
+				    <option value="Inativo">Inativo</option>
+				  </select>
+				  <span class="msg-erro msg-status"></span>
+			    </div>
+
+			    <input type="hidden" name="acao" value="incluir_estoque">
+			    <button type="submit" class="btn btn-primary" id="botao"> 
+			      Gravar
+			    </button>
+			    <a href="index.php" class="btn btn-danger">Cancelar</a>
+			</form>
+		</fieldset>
             </div>
              <div class="tab-pane fade" id="situacao" role="tabpanel" aria-labelledby="list-settings-list">
               <p>Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure.</p>
