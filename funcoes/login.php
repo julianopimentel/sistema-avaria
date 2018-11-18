@@ -39,7 +39,7 @@ $user = $users[0];
  
 session_start();
 $_SESSION['logged_in'] = true;
-$_SESSION['user_id'] = $user['id'];
-$_SESSION['user_name'] = $user['name'];
+$_SESSION['user_id'] = $user['id_login'];
+$_SESSION['user_name'] = $user['nome'];
  
 header('Location: ../home.php');
