@@ -42,4 +42,4 @@ $_SESSION['logged_in'] = true;
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['user_name'] = $user['name'];
  
-header('Location: ../panel.php');
+header('Location: ../home.php');
