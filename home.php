@@ -15,8 +15,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- MetisMenu CSS -->
-    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
 
     <!-- Custom CSS -->
     <link href="css/sb-admin-2.css" rel="stylesheet">
