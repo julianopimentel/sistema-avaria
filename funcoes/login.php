@@ -18,7 +18,7 @@ $passwordHash = make_hash($password);
  
 $PDO = db_connect();
  
-$sql = "SELECT id_login, nome FROM login WHERE email = :email AND senha = :password";
+$sql = "SELECT id_login, nome, sobrenome FROM login WHERE email = :email AND senha = :password";
 $stmt = $PDO->prepare($sql);
  
 $stmt->bindParam(':email', $email);
@@ -41,5 +41,6 @@ session_start();
 $_SESSION['logged_in'] = true;
 $_SESSION['user_id'] = $user['id_login'];
 $_SESSION['user_name'] = $user['nome'];
+$_SESSION['user_sobrenome'] = $user['sobrenome'];
  
 header('Location: ../home.php');
