@@ -83,7 +83,7 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge">0</div>
                                     <div>Produtos!</div>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
+                                    <div class="huge">0</div>
                                     <div>Usuários</div>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
+                                    <div class="huge">0</div>
                                     <div>Avarias</div>
                                 </div>
                             </div>
