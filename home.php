@@ -149,7 +149,6 @@
 			    <button type="submit" class="btn btn-primary" id="botao"> 
 			      Gravar
 			    </button>
-			    <a href="index.php" class="btn btn-danger">Cancelar</a>
 			</form>
 		</fieldset>
             </div>
@@ -169,7 +168,6 @@
 			    <button type="submit" class="btn btn-primary" id="botao"> 
 			      Gravar
 			    </button>
-			    <a href="index.php" class="btn btn-danger">Cancelar</a>
 			</form>
 		</fieldset>
             </div>
@@ -199,12 +197,9 @@
 			    <button type="submit" class="btn btn-primary" id="botao"> 
 			      Gravar
 			    </button>
-			    <a href="index.php" class="btn btn-danger">Cancelar</a>
 			</form>
-		</fieldset>
+			</fieldset>
             </div>
-             <div class="tab-pane fade" id="situacao" role="tabpanel" aria-labelledby="list-settings-list">
-              <p>Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure.</p>
             </div>
           </div>
         </div>
