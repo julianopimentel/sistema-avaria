@@ -28,9 +28,9 @@ $stmt->execute();
  
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
  
-if (count($users) <= 0)
+if (count($users) == 0)
 {
-   header('location: index.php/?login=error');
+   header('location: index.php?login=error');
 }
  
 // pega o primeiro usuário
