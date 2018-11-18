@@ -1,3 +1,24 @@
+<?php
+require 'funcoes/init.php';
+
+	$PDO = db_connect();
+	$sql = 'SELECT COUNT(id)FROM users;';	
+	$stmt = $PDO->prepare($sql);
+	$stmt->execute();
+	$usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+	$PDO = db_connect();
+	$sql = 'SELECT COUNT(id_produto) FROM produto;';
+	$stmt = $PDO->prepare($sql);
+	$stmt->execute();
+	$produtos = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+	$usuario = $usuarios[0];
+	$produto = $produtos[0];
+?>
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -105,7 +126,7 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
+                                    <div class="huge"><?php echo'$usuario';?></div>
                                     <div>Usuários</div>
                                 </div>
                             </div>
