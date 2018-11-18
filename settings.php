@@ -104,7 +104,7 @@ require 'funcoes/init.php';
 						<tr>
 							<td><?=$empresa->id_empresa?></td>
 							<td><?=$empresa->descricao_empresa?></td>
-							<td><?=$empresa->cnpj_empresa?></td>
+							<td><?=$empresa->cnpj?></td>
 							<td><?=$empresa->endereco_empresa?></td>
 							<td><?=$empresa->numero_empresa?></td>
 							<td><?=$empresa->cidade_empresa?></td>
