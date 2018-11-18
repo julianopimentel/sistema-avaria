@@ -101,7 +101,7 @@ require 'funcoes/init.php';
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">0</div>
+                                    <div class="huge"><?php echo '' . $totalprodutos;?>0</div>
                                     <div>Produtos!</div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@ require 'funcoes/init.php';
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                    	<?php echo '' . $total;?>
+                                    	<?php echo '' . $totalusuarios;?>
                                     	</div>
                                     <div>Usuários</div>
                                 </div>
