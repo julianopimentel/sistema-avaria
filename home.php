@@ -115,7 +115,7 @@ require 'funcoes/init.php';
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="cadastro.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -139,7 +139,7 @@ require 'funcoes/init.php';
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="settings.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -161,7 +161,7 @@ require 'funcoes/init.php';
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="avaria.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
