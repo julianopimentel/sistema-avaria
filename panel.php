@@ -1,8 +1,8 @@
 <?php
 session_start();
  
-require_once 'init.php';
-require 'check.php';
+require_once 'fucoes/init.php';
+require 'fucoes/check.php';
 
 ?>
 <!doctype html>

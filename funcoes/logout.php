@@ -10,4 +10,4 @@ $_SESSION['logged_in'] = false;
 session_destroy();
  
 // retorna para a index.php
-header('Location: index.php');
+header('Location: ./index.php');
