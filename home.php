@@ -12,9 +12,6 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/offcanvas.css" rel="stylesheet">
-
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -73,7 +70,6 @@
         </form>
       </div>
     </nav>
-
     <main role="main" class="container">
       <div class="my-5 p-5 bg-white rounded shadow-sm">
        <div class="col">
