@@ -98,8 +98,9 @@ require 'funcoes/check.php';
       <div class="my-5 p-5 bg-white rounded shadow-sm">
        <div class="col">
           <div class="tab-content" id="nav-tabContent">
+          	<p>Bem-vindo ao seu painel, <?php echo $_SESSION['user_name']; ?>
            	    <div class="row">
-           	    	<p>Bem-vindo ao seu painel, <?php echo $_SESSION['user_name']; ?>
+           	    
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
