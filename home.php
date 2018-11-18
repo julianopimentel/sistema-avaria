@@ -5,17 +5,17 @@ require 'funcoes/init.php';
 	$sql = 'SELECT id FROM users;';	
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
-	$usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
+	$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$totalusuarios = count($usuarios); 
 
 	$PDO = db_connect();
 	$sql = 'SELECT id_produto FROM produto;';
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
-	$produtos = $stmt->fetchAll(PDO::FETCH_OBJ);
+	$produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$totalprodutos = count($usuarprodutosios); 
+
 ?>
-
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -124,7 +124,7 @@ require 'funcoes/init.php';
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
-                                    	<?php echo $usuarios($count, 0);?>
+                                    	<?php echo '' . $total;?>
                                     	</div>
                                     <div>Usuários</div>
                                 </div>
