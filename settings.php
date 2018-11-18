@@ -49,14 +49,9 @@ require 'funcoes/init.php';
           <li class="nav-item">
             <a class="nav-link" href="relatorios.php">Relatórios</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings<span class="sr-only">(current)</span></a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="settings.php">Empresa</a>
-              <a class="dropdown-item" href="settings.php">Sistema</a>
-              <a class="dropdown-item" href="settings.php">Usuários</a>
-              <a class="dropdown-item" href="settings.php">Permissões</a>
-            </div>
+         <li class="nav-item">
+            <a class="nav-link" href="relatorios.php">Configurações</a>
+          </li>
           </li>
             <li class="nav-item">
             <a class="nav-link" href="funcao/logout.php">Sair</a>
