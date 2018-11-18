@@ -29,6 +29,9 @@
                 <button type="submit" name="btLogar" value="Entrar" class="btn btn-primary btn-block">Logar</button> 
             </div>
         </form>
+       <?php if(isset($_GET["login"]) == "error"){ ?>
+        <div class="alert alert-danger alert-block alert-aling" role="alert">Ops! E-mail ou Senha estão errado</div>
+        <?php } ?>
     </div>
 </body>
 </html>
