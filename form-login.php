@@ -22,7 +22,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                    <input type="password" name="senha" class="form-control" id="password" placeholder="Senha">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Senha">
                 </div> 
             </div>
             <div class="form-group">
