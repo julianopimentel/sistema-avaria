@@ -2,19 +2,16 @@
 require 'funcoes/init.php';
 
 	$PDO = db_connect();
-	$sql = 'SELECT COUNT(id)FROM users;';	
+	$sql = 'SELECT id FROM users;';	
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
 	$usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 	$PDO = db_connect();
-	$sql = 'SELECT COUNT(id_produto) FROM produto;';
+	$sql = 'SELECT id_produto FROM produto;';
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
 	$produtos = $stmt->fetchAll(PDO::FETCH_OBJ);
-
-	$usuario = $usuarios[0];
-	$produto = $produtos[0];
 ?>
 
 
@@ -104,7 +101,8 @@ require 'funcoes/init.php';
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?=$produtos->produto?></div>
+                                    <div class="huge"><? echo produtos($count, 0);
+                                    ?></div>
                                     <div>Produtos!</div>
                                 </div>
                             </div>
