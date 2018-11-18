@@ -23,7 +23,7 @@ require 'funcoes/init.php';
 	$totalavarias = count($avarias); 
 
 	$PDO = db_connect();
-	$sql = 'SELECT id_avaria, situacao_avaria.descricao_situacao FROM avaria INNER JOIN situacao_avaria ON avaria.id_avaria = situacao_avaria.id_situacao WHERE id_avaria IN (2);';
+	$sql = 'SELECT cod_situacao FROM avaria WHERE cod_situacao IN (2);';
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
 	$pendencias = $stmt->fetchAll(PDO::FETCH_ASSOC);
