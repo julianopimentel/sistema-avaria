@@ -110,7 +110,12 @@ require 'funcoes/init.php';
 						</tr>	
 					<?php endforeach;?>
 				</table>
-				</fieldset>
+				<?php else: ?>
+
+				<!-- Mensagem caso não exista clientes ou não encontrado  -->
+				<h3 class="text-center text-primary">Não encontrada, contactar o suporte!</h3>
+			<?php endif; ?>
+		</fieldset>
             </div>
 
             <div class="tab-pane fade" id="sistema" role="tabpanel" aria-labelledby="list-profile-list">
