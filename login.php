@@ -12,7 +12,7 @@ require 'conexao.php';
 
 
 // Dica 1 - Verifica se a origem da requisição é do mesmo domínio da aplicação
-if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] != "http://deskapps.online/cocil-inventario/teste/"):
+if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] != "http://deskapps.online/cocil-inventario/"):
 	$retorno = array('codigo' => 0, 'mensagem' => 'Origem da requisição não autorizada!');
 	echo json_encode($retorno);
 	exit();
