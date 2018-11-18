@@ -113,13 +113,13 @@ class Funcionario{
 			$cst->bindParam(':senha', $this->senha, PDO::PARAM_STR);
 			$cst->execute();
 			if($cst->rowCount() == 0){
-				header('location: login/?login=error');
+				header('location: ?login=error');
 			}else{
 				session_start();
 				$rst = $cst->fetch();
 				$_SESSION['logado'] = "sim";
 				$_SESSION['func'] = $rst['idFuncionario'];
-				header("location: login/admin");
+				header("location: admin");
 			}
 		}catch(PDOException $e){
 			return 'Error: '.$e->getMassage();
