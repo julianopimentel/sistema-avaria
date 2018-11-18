@@ -95,10 +95,6 @@ require 'funcoes/init.php';
             <a class="nav-link" href="funcao/logout.php">Sair</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
       </div>
     </nav>
     <main role="main" class="container">
@@ -115,7 +111,7 @@ require 'funcoes/init.php';
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><?php echo '' . $totalprodutos;?></div>
-                                    <div>Produtos!</div>
+                                    <div>Produtos</div>
                                 </div>
                             </div>
                         </div>
