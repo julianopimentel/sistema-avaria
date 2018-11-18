@@ -78,10 +78,7 @@
       <div class="my-5 p-5 bg-white rounded shadow-sm">
        <div class="col">
           <div class="tab-content" id="nav-tabContent">
-           	
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
+           	    <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
@@ -169,10 +166,6 @@
                         </a>
                     </div>
                 </div>
-            </div>
-           
-
-
           </div>
         </div>
         </div>
