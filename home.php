@@ -27,28 +27,28 @@
       <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.php">Dashboard</a>
           </li>
 		<li class="nav-item">
-            <a class="nav-link" href="#">Avarias</a>
+            <a class="nav-link" href="avaria.php">Avarias</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Cadastro</a>
+            <a class="nav-link" href="cadastro.php">Cadastro<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Relatórios</a>
+            <a class="nav-link" href="relatorios.php">Relatórios</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Empresa</a>
-              <a class="dropdown-item" href="#">Sistema</a>
-              <a class="dropdown-item" href="#">Usuários</a>
-              <a class="dropdown-item" href="#">Permissões</a>
+              <a class="dropdown-item" href="settings.php">Empresa</a>
+              <a class="dropdown-item" href="settings.php">Sistema</a>
+              <a class="dropdown-item" href="settings.php">Usuários</a>
+              <a class="dropdown-item" href="settings.php">Permissões</a>
             </div>
           </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Sair</a>
+            <a class="nav-link" href="funcao/logout.php">Sair</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -60,7 +60,7 @@
 
     <div class="nav-scroller bg-white shadow-sm">
       <nav class="nav nav-underline">
-        <a class="nav-link active" href="#">Dashboard</a>
+        <a class="nav-link active" href="index.php">Dashboard</a>
         <a class="nav-link" data-toggle="tab" href="#produto" role="produto">Produto</a>
         <a class="nav-link" data-toggle="tab" href="#fornecedor" role="fornecedor">Fornecedor</a>
         <a class="nav-link" data-toggle="tab" href="#tipoavaria" role="tipoavaria">Tipo de Avaria</a>
