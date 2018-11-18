@@ -69,7 +69,7 @@
     </div>
 
     <main role="main" class="container">
-      <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <div class="my-5 p-5 bg-white rounded shadow-sm">
        <div class="col">
           <div class="tab-content" id="nav-tabContent">
            	
@@ -104,7 +104,7 @@
 			      <span class="msg-erro msg-modelo"></span>
 			    </div>
 			    <div class="form-group">
-			      <label for="ip">Fornecedor (Opcional)</label>
+			      <label for="ip">Fornecedores (Opcional)</label>
 			      <input type="ip" class="form-control" id="ip" maxlength="20" name="ip" placeholder="Informe o Forecedor">
 			      <span class="msg-erro msg-ip"></span>
 			    </div>
