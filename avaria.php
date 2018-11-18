@@ -98,7 +98,7 @@ require 'funcoes/init.php';
 		<fieldset>
 
 			<!-- Cabeçalho da Listagem -->
-			<legend><h1>Listagem de Produtos com Avaria - COCIL</h1></legend>
+			<legend><h1>Empresas</h1></legend>
 				<?php if(!empty($clientes)):?>
 
 				<!-- Tabela de Clientes -->
