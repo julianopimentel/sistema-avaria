@@ -10,9 +10,9 @@ class Conexao{
 	//CONSTRUTOR
 	public function __construct(){		
 		$this->servidor = "localhost";
-		$this->banco = "colegio";
-		$this->usuario = "root"; 
-		$this->senha = "";
+		$this->banco = "u617793640_cocil";
+		$this->usuario = "u617793640_acess"; 
+		$this->senha = "fHtjYbni84Xs";
 	}
 	//METODO PARA CONECTAR
 	public function conectar(){
