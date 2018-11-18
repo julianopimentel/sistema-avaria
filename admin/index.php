@@ -8,7 +8,7 @@ session_start();
 if($_SESSION["logado"] == "sim"){
 	$objFunc->funcionarioLogado($_SESSION['func']);
 }else{
-	header("location: /aulas/login"); 
+	header("location: index.php"); 
 }
 
 if(isset($_GET['sair']) == "sim"){

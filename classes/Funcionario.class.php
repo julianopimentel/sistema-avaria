@@ -136,7 +136,7 @@ class Funcionario{
 	
 	public function sairFuncionario(){
 		session_destroy();
-		header ('location: http://localhost/login');
+		header ('location: index.php');
 	}
 	
 }
