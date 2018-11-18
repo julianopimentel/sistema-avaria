@@ -10,6 +10,8 @@
 </head>
 
 <body>
+        <div id="areaLogin">
+
          <form action="login.php" method="post">
             <div class="form-group">
                 <div class="input-group">
@@ -27,5 +29,6 @@
                 <button type="submit" name="btLogar" value="Entrar" class="btn btn-primary btn-block">Logar</button> 
             </div>
         </form>
+    </div>
 </body>
 </html>
