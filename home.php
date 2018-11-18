@@ -66,7 +66,14 @@
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Cadastro</a>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown4">
+            <a class="dropdown-item" data-toggle="tab" href="#fat4" role="tab">@fat</a>
+            <a class="dropdown-item" data-toggle="tab" href="#mdo4" role="tab">@mdo</a>
+          </div>
+        </li>
         <a class="nav-link" href="#">Link</a>
       </nav>
     </div>
