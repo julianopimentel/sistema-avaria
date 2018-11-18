@@ -73,7 +73,8 @@
       <div class="my-3 p-3 bg-white rounded shadow-sm">
        <div class="col-8">
           <div class="tab-content" id="nav-tabContent">
-           
+           	
+           	<center>
             <div class="tab-pane fade show active" id="produto" role="tabpanel" aria-labelledby="list-home-list">
 			<fieldset>
 			<legend><h1>Cadastro de Produtos</h1></legend>
@@ -118,18 +119,14 @@
 				    <option value="Ativo">Ativo</option>
 				    <option value="Inativo">Inativo</option>
 				  </select>
-				  <span class="msg-erro msg-status"></span>
 			    </div>
 
 			    <input type="hidden" name="acao" value="incluir">
-			    <button type="submit" class="btn btn-primary" id="botao"> 
-			      Gravar
-			    </button>
-			    <a href="index.php" class="btn btn-danger">Cancelar</a>
+			    <button type="submit" class="btn btn-primary" id="botao">Gravar</button>
 			</form>
 			</fieldset>
             </div>
-            
+
             <div class="tab-pane fade" id="fornecedor" role="tabpanel" aria-labelledby="list-profile-list">
               <p>Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.</p>
             </div>
