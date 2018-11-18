@@ -57,7 +57,7 @@ require 'funcoes/init.php';
             <a class="nav-link" href="relatorios.php">Relatórios</a>
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="relatorios.php">Configurações</a>
+            <a class="nav-link active" href="relatorios.php">Configurações</a>
           </li>
           </li>
             <li class="nav-item">
@@ -73,7 +73,6 @@ require 'funcoes/init.php';
         <a class="nav-link" data-toggle="tab" href="#empresa" role="empresa">Empresa</a>
         <a class="nav-link" data-toggle="tab" href="#sistema" role="sistema">Sistema</a>
         <a class="nav-link" data-toggle="tab" href="#usuario" role="usuario">Usuários</a>
-        <a class="nav-link" data-toggle="tab" href="#permissoes" role="permissoes">Permissões</a>
       </nav>
     </div>
 
@@ -131,7 +130,7 @@ require 'funcoes/init.php';
 			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
 
 			    <div class="form-group">
-			      <label for="status">Envio por E=mail - Relatório</label>
+			      <label for="status">Envio por E-mail - Relatório</label>
 			      <select class="form-control" name="status" id="status">
 				    <option value="">Selecione o tempo</option>
 				    <option value="nao">Não</option>
@@ -143,7 +142,7 @@ require 'funcoes/init.php';
 			    </div>
 
 			    <div class="form-group">
-			      <label for="status">Envio por E=mail - Cadastro de Novas Avarias</label>
+			      <label for="status">Envio por E-mail - Cadastro de Novas Avarias</label>
 			      <select class="form-control" name="status" id="status">
 				    <option value="">Selecione o Status</option>
 				    <option value="Sim">Sim</option>
@@ -196,12 +195,6 @@ require 'funcoes/init.php';
 				<!-- Mensagem caso não exista clientes ou não encontrado  -->
 				<h3 class="text-center text-primary">Não encontrada, contactar o suporte!</h3>
 			<?php endif; ?>
-            </div>
-            <div class="tab-pane fade" id="permissoes" role="tabpanel" aria-labelledby="list-settings-list">
-             
-			<legend><h1>Permissões</h1></legend>
-			<H1>Página em desenvolvimento</H1>
-			
             </div>
             </div>
           </div>
