@@ -111,8 +111,7 @@ require 'funcoes/init.php';
 							<td><?=$empresa->cidade_empresa?></td>
 							<td><?=$empresa->estado_empresa?></td>
 							<td>
-								<a href='info.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">+Info</a>
-								<a href='editar.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Editar</a>
+							<a href='editar.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Editar</a>
 							</td>
 						</tr>	
 					<?php endforeach;?>
@@ -132,17 +131,23 @@ require 'funcoes/init.php';
 			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
 
 			    <div class="form-group">
-			      <label for="nome">Fornecedor</label>
-			      <input type="text" class="form-control" id="descricao_fornecedor" name="descricao_fornecedor" placeholder="Infome o Fornecedor.">
-			      <span class="msg-erro msg-nome"></span>
+			      <label for="status">Envio por E=mail - Relatório</label>
+			      <select class="form-control" name="status" id="status">
+				    <option value="">Selecione o tempo</option>
+				    <option value="nao">Não</option>
+				    <option value="dia">Dia</option>
+				    <option value="dia">Mês</option>
+				    <option value="dia">Ano</option>
+				  </select>
+				  <span class="msg-erro msg-status"></span>
 			    </div>
 
 			    <div class="form-group">
-			      <label for="status">Status</label>
+			      <label for="status">Envio por E=mail - Cadastro de Novas Avarias</label>
 			      <select class="form-control" name="status" id="status">
 				    <option value="">Selecione o Status</option>
-				    <option value="Ativo">Ativo</option>
-				    <option value="Inativo">Inativo</option>
+				    <option value="Sim">Sim</option>
+				    <option value="Nao">Não</option>
 				  </select>
 				  <span class="msg-erro msg-status"></span>
 			    </div>
@@ -181,8 +186,7 @@ require 'funcoes/init.php';
 							<td><?=$usuario->situacao?></td>
 							<td><?=$usuario->nivel?></td>
 							<td>
-								<a href='info.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">+Info</a>
-								<a href='editar.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Editar</a>
+							<a href='editar.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Editar</a>
 							</td>
 						</tr>	
 					<?php endforeach;?>
