@@ -57,7 +57,7 @@ require 'funcoes/init.php';
             <a class="nav-link" href="relatorios.php">Relatórios</a>
           </li>
          <li class="nav-item active">
-            <a class="nav-link" href="relatorios.php">Configurações</a>
+            <a class="nav-link" href="settings.php">Configurações</a>
           </li>
           </li>
             <li class="nav-item">
