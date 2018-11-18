@@ -80,10 +80,9 @@ require 'funcoes/init.php';
        <div class="col">
           <div class="tab-content" id="nav-tabContent">
            	
-            <div class="tab-pane fade show active" id="produto" role="tabpanel" aria-labelledby="list-home-list">
+            <div class="tab-pane fade show active" id="empresa" role="tabpanel" aria-labelledby="list-home-list">
 
-		<fieldset>
-
+			<fieldset>
 			<!-- Cabeçalho da Listagem -->
 			<legend><h1>Empresa</h1></legend>
 				<?php if(!empty($empresa)):?>
@@ -116,20 +115,12 @@ require 'funcoes/init.php';
 						</tr>	
 					<?php endforeach;?>
 				</table>
-
-			<?php else: ?>
-
-				<!-- Mensagem caso não exista clientes ou não encontrado  -->
-				<h3 class="text-center text-primary">Avaria não encontrada, tente novamente!</h3>
-			<?php endif; ?>
-		</fieldset>
-
-
+				</fieldset>
             </div>
 
-            <div class="tab-pane fade" id="fornecedor" role="tabpanel" aria-labelledby="list-profile-list">
+            <div class="tab-pane fade" id="sistema" role="tabpanel" aria-labelledby="list-profile-list">
  			<fieldset>
-			<legend><h1>Cadastro de Fornecedores</h1></legend>
+			<legend><h1>Sistema</h1></legend>
 			
 			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
 
@@ -154,11 +145,12 @@ require 'funcoes/init.php';
 			      Gravar
 			    </button>
 			</form>
-		</fieldset>
+			</fieldset>
             </div>
-            <div class="tab-pane fade" id="tipoavaria" role="tabpanel" aria-labelledby="list-messages-list">
+
+            <div class="tab-pane fade" id="usuario" role="tabpanel" aria-labelledby="list-messages-list">
 			<fieldset>
-			<legend><h1>Cadastro de Tipos de Avarias</h1></legend>
+			<legend><h1>Usuários</h1></legend>
 			
 			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
 
@@ -175,34 +167,11 @@ require 'funcoes/init.php';
 			</form>
 		</fieldset>
             </div>
-            <div class="tab-pane fade" id="estoque" role="tabpanel" aria-labelledby="list-settings-list">
-              <fieldset>
-			<legend><h1>Cadastro de Estoques</h1></legend>
+            <div class="tab-pane fade" id="permissoes" role="tabpanel" aria-labelledby="list-settings-list">
+             
+			<legend><h1>Permissões</h1></legend>
+			<H1>Página em desenvolvimento</H1>
 			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
-
-			    <div class="form-group">
-			      <label for="nome">Local de Estoque</label>
-			      <input type="text" class="form-control" id="descricao_estoque" name="descricao_estoque" placeholder="Infome o novo Local de Estoque.">
-			      <span class="msg-erro msg-nome"></span>
-			    </div>
-
-			    <div class="form-group">
-			      <label for="status">Status</label>
-			      <select class="form-control" name="status" id="status">
-				    <option value="">Selecione o Status</option>
-				    <option value="Ativo">Ativo</option>
-				    <option value="Inativo">Inativo</option>
-				  </select>
-				  <span class="msg-erro msg-status"></span>
-			    </div>
-
-			    <input type="hidden" name="acao" value="incluir_estoque">
-			    <button type="submit" class="btn btn-primary" id="botao"> 
-			      Gravar
-			    </button>
-			</form>
-			</fieldset>
             </div>
             </div>
           </div>
