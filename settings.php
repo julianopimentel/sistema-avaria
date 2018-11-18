@@ -93,12 +93,22 @@ require 'funcoes/init.php';
 					<tr class='active'>
 						<th>Empresa</th>
 						<th>Nome Fantasia</th>
+						<th>CNPJ</th>
+						<th>Endereço</th>
+						<th>Número</th>
+						<th>Cidade</th>
+						<th>Estado</th>
 						<th>Ação</th>
 					</tr>
 					<?php foreach($empresa as $empresa):?>
 						<tr>
 							<td><?=$empresa->id_empresa?></td>
 							<td><?=$empresa->descricao_empresa?></td>
+							<td><?=$empresa->cnpj_empresa?></td>
+							<td><?=$empresa->endereco_empresa?></td>
+							<td><?=$empresa->numero_empresa?></td>
+							<td><?=$empresa->cidade_empresa?></td>
+							<td><?=$empresa->estado_empresa?></td>
 							<td>
 								<a href='info.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">+Info</a>
 								<a href='editar.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Editar</a>
