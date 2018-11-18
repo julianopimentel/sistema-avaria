@@ -2,16 +2,10 @@
 require 'funcoes/init.php';
 
 	$PDO = db_connect();
-	$sql = 'SELECT * FROM avaria
-			INNER JOIN produto ON avaria.cod_produto = produto.codigo_erp
-			INNER JOIN tipo_avaria ON avaria.cod_tipoavaria = tipo_avaria.id_tipoavaria
-			INNER JOIN empresa ON avaria.cod_empresa = empresa.id_empresa
-			INNER JOIN estoque ON avaria.cod_estoque = estoque.id_estoque
-			INNER JOIN situacao_avaria ON avaria.cod_situacao = situacao_avaria.id_situacao
-			INNER JOIN login ON avaria.cadastro_avaria_cod = login.id_login';
+	$sql = 'SELECT * FROM empresa';
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
-	$clientes = $stmt->fetchAll(PDO::FETCH_OBJ);
+	$empresa = $stmt->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 
@@ -92,31 +86,19 @@ require 'funcoes/init.php';
 
 			<!-- Cabeçalho da Listagem -->
 			<legend><h1>Empresa</h1></legend>
-				<?php if(!empty($clientes)):?>
+				<?php if(!empty($empresa)):?>
 
 				<!-- Tabela de Clientes -->
 				<table class="table table-striped">
 					<tr class='active'>
-						<th>Código ERP</th>
-						<th>Descrição</th>
-						<th>Código de Barra</th>
-						<th>Situação</th>
-						<th>Cadastro</th>
-						<th>Local</th>
-						<th>Tipo</th>
-						<th>Data</th>
+						<th>Empresa</th>
+						<th>Nome Fantasia</th>
 						<th>Ação</th>
 					</tr>
-					<?php foreach($clientes as $cliente):?>
+					<?php foreach($empresa as $empresa):?>
 						<tr>
-							<td><?=$cliente->codigo_erp?></td>
-							<td><?=$cliente->descricao_produto?></td>
-							<td><?=$cliente->codigobarra?></td>
-							<td><?=$cliente->descricao_situacao?></td>
-							<td><?=$cliente->nome?></td>
-							<td><?=$cliente->descricao_estoque?></td>
-							<td><?=$cliente->descricao_tipoavaria?></td>
-							<td><?=$cliente->cadastro_avaria_date?></td>
+							<td><?=$empresa->id_empresa?></td>
+							<td><?=$empresa->descricao_empresa?></td>
 							<td>
 								<a href='info.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">+Info</a>
 								<a href='editar.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Editar</a>
