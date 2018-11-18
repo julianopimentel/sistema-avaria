@@ -9,7 +9,7 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
  
 if (empty($email) || empty($password))
 {
-   header('location: ./index.php?login=error');
+   header('location: ../index.php?login=error');
    exit;
 }
  
@@ -30,7 +30,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
  
 if (count($users) == 0)
 {
-   header('location: ./index.php?login=error');
+   header('location: ../index.php?login=error');
    exit;
 }
  
