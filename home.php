@@ -71,7 +71,7 @@ require 'funcoes/init.php';
       <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Dashboard<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="home.php">Dashboard<span class="sr-only">(current)</span></a>
           </li>
 		<li class="nav-item">
             <a class="nav-link" href="avaria.php">Avarias</a>
@@ -82,14 +82,8 @@ require 'funcoes/init.php';
           <li class="nav-item">
             <a class="nav-link" href="relatorios.php">Relatórios</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="settings.php">Empresa</a>
-              <a class="dropdown-item" href="settings.php">Sistema</a>
-              <a class="dropdown-item" href="settings.php">Usuários</a>
-              <a class="dropdown-item" href="settings.php">Permissões</a>
-            </div>
+         <li class="nav-item">
+            <a class="nav-link" href="relatorios.php">Configurações</a>
           </li>
             <li class="nav-item">
             <a class="nav-link" href="funcao/logout.php">Sair</a>
@@ -102,6 +96,7 @@ require 'funcoes/init.php';
        <div class="col">
           <div class="tab-content" id="nav-tabContent">
            	    <div class="row">
+           	    	<p>Bem-vindo ao seu painel, <?php echo $_SESSION['user_name']; ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">

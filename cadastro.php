@@ -27,7 +27,7 @@
       <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.php">Dashboard</a>
+            <a class="nav-link" href="home.php">Dashboard</a>
           </li>
 		<li class="nav-item">
             <a class="nav-link" href="avaria.php">Avarias</a>
@@ -38,14 +38,8 @@
           <li class="nav-item">
             <a class="nav-link" href="relatorios.php">Relatórios</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="settings.php">Empresa</a>
-              <a class="dropdown-item" href="settings.php">Sistema</a>
-              <a class="dropdown-item" href="settings.php">Usuários</a>
-              <a class="dropdown-item" href="settings.php">Permissões</a>
-            </div>
+         <li class="nav-item">
+            <a class="nav-link" href="relatorios.php">Configurações</a>
           </li>
             <li class="nav-item">
             <a class="nav-link" href="funcao/logout.php">Sair</a>
@@ -60,7 +54,7 @@
 
     <div class="nav-scroller bg-white shadow-sm">
       <nav class="nav nav-underline">
-        <a class="nav-link active" href="index.php">Dashboard</a>
+        <a class="nav-link active" href="home.php">Dashboard</a>
         <a class="nav-link" data-toggle="tab" href="#produto" role="produto">Produto</a>
         <a class="nav-link" data-toggle="tab" href="#fornecedor" role="fornecedor">Fornecedor</a>
         <a class="nav-link" data-toggle="tab" href="#tipoavaria" role="tipoavaria">Tipo de Avaria</a>
