@@ -65,7 +65,6 @@
         <a class="nav-link" data-toggle="tab" href="#fornecedor" role="fornecedor">Fornecedor</a>
         <a class="nav-link" data-toggle="tab" href="#tipoavaria" role="tipoavaria">Tipo de Avaria</a>
         <a class="nav-link" data-toggle="tab" href="#estoque" role="estoque">Estoque</a>
-        <a class="nav-link" data-toggle="tab" href="#situacao" role="situacao">Situação</a>
       </nav>
     </div>
 
@@ -91,26 +90,26 @@
 
 			    <div class="form-group">
 			      <label for="nome">Descrição do produto</label>
-			      <input type="text" class="form-control" id="maquina" name="maquina" placeholder="Infome o Nnome da máquina.">
+			      <input type="text" class="form-control" id="maquina" name="maquina" placeholder="Infome a descrição do produto">
 			      <span class="msg-erro msg-nome"></span>
 			    </div>
 			    <div class="form-group">
 			      <label for="modelo">Código ERP</label>
-			      <input type="modelo" class="form-control" id="modelo" name="modelo" placeholder="Informe o modelo">
+			      <input type="modelo" class="form-control" id="modelo" name="modelo" placeholder="Informe o código do seu ERP">
 			      <span class="msg-erro msg-modelo"></span>
 			    </div>
 			      <div class="form-group">
-			      <label for="modelo">Código Fornecedor</label>
-			      <input type="modelo" class="form-control" id="modelo" name="modelo" placeholder="Informe o modelo">
+			      <label for="modelo">Código Fornecedor (Opcional)</label>
+			      <input type="modelo" class="form-control" id="modelo" name="modelo" placeholder="Informe o código do Fornecedor">
 			      <span class="msg-erro msg-modelo"></span>
 			    </div>
 			    <div class="form-group">
-			      <label for="ip">Fabricante</label>
-			      <input type="ip" class="form-control" id="ip" maxlength="20" name="ip" placeholder="Informe o IP">
+			      <label for="ip">Fornecedor (Opcional)</label>
+			      <input type="ip" class="form-control" id="ip" maxlength="20" name="ip" placeholder="Informe o Forecedor">
 			      <span class="msg-erro msg-ip"></span>
 			    </div>
 			    <div class="form-group">
-			      <label for="status">Situação</label>
+			      <label for="status">Situação (Opcional)</label>
 			      <select class="form-control" name="status" id="status">
 				    <option value="">Selecione o Status</option>
 				    <option value="Ativo">Ativo</option>
