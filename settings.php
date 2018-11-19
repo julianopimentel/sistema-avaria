@@ -4,9 +4,16 @@ session_start();
 require_once 'funcoes/init.php';
 require 'funcoes/check.php';
 
-?>
-<?php
-require 'funcoes/init.php';
+ /* Constantes de configuração */  
+ define('QTDE_REGISTROS', 5);   
+ define('RANGE_PAGINAS', 1);   
+   
+ /* Recebe o número da página via parâmetro na URL */  
+ $pagina_atual = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;   
+   
+ /* Calcula a linha inicial da consulta */  
+ $linha_inicial = ($pagina_atual -1) * QTDE_REGISTROS;  
+
 
 	$PDO = db_connect();
 	$sql = 'SELECT * FROM empresa';
@@ -15,12 +22,43 @@ require 'funcoes/init.php';
 	$empresa = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 	$PDO = db_connect();
-	$sql = 'SELECT * FROM login';
-	$stmt = $PDO->prepare($sql);
-	$stmt->execute();
-	$usuario = $stmt->fetchAll(PDO::FETCH_OBJ);
+ 	/* Instrução de consulta para paginação com MySQL */  
+ 	$sql = "SELECT * FROM login LIMIT {$linha_inicial}, " . QTDE_REGISTROS;  
+ 	$stm = $PDO->prepare($sql);   
+ 	$stm->execute();   
+ 	$dados = $stm->fetchAll(PDO::FETCH_OBJ); 
 
-?>
+	 /* Conta quantos registos existem na tabela */  
+	$sqlContador = "SELECT COUNT(*) AS total_registros FROM login";   
+ 	$stmt = $PDO->prepare($sqlContador);   
+ 	$stmt->execute();   
+ 	$valor = $stmt->fetch(PDO::FETCH_OBJ);   
+
+ /* Idêntifica a primeira página */  
+ $primeira_pagina = 1;   
+   
+ /* Cálcula qual será a última página */  
+ $ultima_pagina  = ceil($valor->total_registros / QTDE_REGISTROS);   
+   
+ /* Cálcula qual será a página anterior em relação a página atual em exibição */   
+ $pagina_anterior = ($pagina_atual > 1) ? $pagina_atual -1 : 0 ;   
+   
+ /* Cálcula qual será a pŕoxima página em relação a página atual em exibição */   
+ $proxima_pagina = ($pagina_atual < $ultima_pagina) ? $pagina_atual +1 : 0 ;  
+   
+ /* Cálcula qual será a página inicial do nosso range */    
+ $range_inicial  = (($pagina_atual - RANGE_PAGINAS) >= 1) ? $pagina_atual - RANGE_PAGINAS : 1 ;   
+   
+ /* Cálcula qual será a página final do nosso range */    
+ $range_final   = (($pagina_atual + RANGE_PAGINAS) <= $ultima_pagina ) ? $pagina_atual + RANGE_PAGINAS : $ultima_pagina ;   
+   
+ /* Verifica se vai exibir o botão "Primeiro" e "Pŕoximo" */   
+ $exibir_botao_inicio = ($range_inicial < $pagina_atual) ? 'mostrar' : 'esconder'; 
+   
+ /* Verifica se vai exibir o botão "Anterior" e "Último" */   
+ $exibir_botao_final = ($range_final > $pagina_atual) ? 'mostrar' : 'esconder';  
+   
+ ?> 
 
 
 <!doctype html>
@@ -54,7 +92,7 @@ require 'funcoes/init.php';
           <li class="nav-item">
             <a class="nav-link" href="home.php">Dashboard</a>
           </li>
-		<li class="nav-item">
+	       	<li class="nav-item">
             <a class="nav-link" href="avaria.php">Avarias</a>
           </li>
           <li class="nav-item">
@@ -77,9 +115,9 @@ require 'funcoes/init.php';
     <div class="nav-scroller bg-white shadow-sm">
       <nav class="nav nav-underline">
         <a class="nav-link active" href="home.php">Dashboard</a>
-        <a class="nav-link" data-toggle="tab" href="#empresa" role="empresa">Empresa</a>
-        <a class="nav-link" data-toggle="tab" href="#sistema" role="sistema">Sistema</a>
         <a class="nav-link" data-toggle="tab" href="#usuario" role="usuario">Usuários</a>
+        <a class="nav-link" data-toggle="tab" href="#sistema" role="sistema">Sistema</a>
+        <a class="nav-link" data-toggle="tab" href="#empresa" role="empresa">Empresa</a>
       </nav>
     </div>
 
@@ -88,46 +126,60 @@ require 'funcoes/init.php';
        <div class="col">
           <div class="tab-content" id="nav-tabContent">
            	
-            <div class="tab-pane fade show active" id="empresa" role="tabpanel" aria-labelledby="list-home-list">
-
-			<fieldset>
+            <div class="tab-pane fade show active" id="usuario" role="tabpanel" aria-labelledby="list-home-list">
+<fieldset>
 			<!-- Cabeçalho da Listagem -->
-			<legend><h1>Empresa</h1></legend>
-				<?php if(!empty($empresa)):?>
-
-				<!-- Tabela de Clientes -->
-				<table class="table table-striped">
-					<tr class='active'>
-						<th>Empresa</th>
-						<th>Nome Fantasia</th>
-						<th>CNPJ</th>
-						<th>Endereço</th>
-						<th>Número</th>
-						<th>Cidade</th>
-						<th>Estado</th>
+			<legend><h1>Usuários</h1></legend>
+  <?php if (!empty($dados)): ?>  
+     <table class="table table-striped table-bordered">    
+     <thead>    
+       <tr class='active'>    
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Sobrenome</th>
+						<th>E-Mail</th>
+						<th>Situação</th>
+						<th>Nível</th>
 						<th>Ação</th>
-					</tr>
-					<?php foreach($empresa as $empresa):?>
-						<tr>
-							<td><?=$empresa->id_empresa?></td>
-							<td><?=$empresa->descricao_empresa?></td>
-							<td><?=$empresa->cnpj?></td>
-							<td><?=$empresa->endereco_empresa?></td>
-							<td><?=$empresa->numero_empresa?></td>
-							<td><?=$empresa->cidade_empresa?></td>
-							<td><?=$empresa->estado_empresa?></td>
+       </tr>    
+     </thead>    
+     <tbody>    
+       <?php foreach($dados as $usuario):?>   
+       <tr>    
+							<td><?=$usuario->id_login?></td>
+							<td><?=$usuario->nome?></td>
+							<td><?=$usuario->sobrenome?></td>
+							<td><?=$usuario->email?></td>
+							<td><?=$usuario->situacao?></td>
+							<td><?=$usuario->nivel?></td>
 							<td>
-							<a href='editar.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Editar</a>
-							</td>
-						</tr>	
-					<?php endforeach;?>
-				</table>
-				<?php else: ?>
-
-				<!-- Mensagem caso não exista clientes ou não encontrado  -->
-				<h3 class="text-center text-primary">Não encontrada, contactar o suporte!</h3>
-			<?php endif; ?>
-		</fieldset>
+							<a href='editar.php?id=<?=$usuario->id_login?>' class="btn btn-primary">Editar</a>
+							</td>  
+       </tr>    
+       <?php endforeach; ?>   
+     </tbody>    
+     </table>    
+     
+     <div class='box-paginacao'>     
+       <a class='box-navegacao <?=$exibir_botao_inicio?>' href="settings.php?page=<?=$primeira_pagina?>" title="Primeira Página">Primeira</a>    
+       <a class='box-navegacao <?=$exibir_botao_inicio?>' href="settings.php?page=<?=$pagina_anterior?>" title="Página Anterior">Anterior</a>     
+   
+      <?php  
+      /* Loop para montar a páginação central com os números */   
+      for ($i=$range_inicial; $i <= $range_final; $i++):   
+        $destaque = ($i == $pagina_atual) ? 'destaque' : '' ;  
+        ?>   
+        <a class='box-numero <?=$destaque?>' href="settings.php?page=<?=$i?>"><?=$i?></a>    
+      <?php endfor; ?>    
+   
+       <a class='box-navegacao <?=$exibir_botao_final?>' href="settings.php?page=<?=$proxima_pagina?>" title="Próxima Página">Próxima</a>    
+       <a class='box-navegacao <?=$exibir_botao_final?>' href="settings.php?page=<?=$ultima_pagina?>" title="Última Página">Último</a>    
+     </div>   
+    <?php else: ?>   
+	<!-- Mensagem caso não exista clientes ou não encontrado  -->
+	<h3 class="text-center text-primary">Não encontrada, contactar o suporte!</h3>
+    <?php endif; ?> 
+			
             </div>
 
             <div class="tab-pane fade" id="sistema" role="tabpanel" aria-labelledby="list-profile-list">
@@ -166,42 +218,47 @@ require 'funcoes/init.php';
 			</fieldset>
             </div>
 
-            <div class="tab-pane fade" id="usuario" role="tabpanel" aria-labelledby="list-messages-list">
+            <div class="tab-pane fade" id="empresa" role="tabpanel" aria-labelledby="list-messages-list">
 			<fieldset>
 			<!-- Cabeçalho da Listagem -->
-			<legend><h1>Usuários</h1></legend>
-				<?php if(!empty($usuario)):?>
+			<legend><h1>Empresa</h1></legend>
+				<?php if(!empty($empresa)):?>
 
 				<!-- Tabela de Clientes -->
-				<table class="table table-striped">
+				<table class="table table-striped table-bordered">
 					<tr class='active'>
-						<th>ID</th>
-						<th>Nome</th>
-						<th>Sobrenome</th>
-						<th>E-Mail</th>
-						<th>Situação</th>
-						<th>Nível</th>
+						<th>Empresa</th>
+						<th>Nome Fantasia</th>
+						<th>CNPJ</th>
+						<th>Endereço</th>
+						<th>Número</th>
+						<th>Cidade</th>
+						<th>Estado</th>
 						<th>Ação</th>
 					</tr>
-					<?php foreach($usuario as $usuario):?>
+               <tbody>   
+					<?php foreach($empresa as $empresa):?>
 						<tr>
-							<td><?=$usuario->id_login?></td>
-							<td><?=$usuario->nome?></td>
-							<td><?=$usuario->sobrenome?></td>
-							<td><?=$usuario->email?></td>
-							<td><?=$usuario->situacao?></td>
-							<td><?=$usuario->nivel?></td>
+							<td><?=$empresa->id_empresa?></td>
+							<td><?=$empresa->descricao_empresa?></td>
+							<td><?=$empresa->cnpj?></td>
+							<td><?=$empresa->endereco_empresa?></td>
+							<td><?=$empresa->numero_empresa?></td>
+							<td><?=$empresa->cidade_empresa?></td>
+							<td><?=$empresa->estado_empresa?></td>
 							<td>
 							<a href='editar.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Editar</a>
 							</td>
 						</tr>	
 					<?php endforeach;?>
+        </tbody>
 				</table>
 				<?php else: ?>
 
 				<!-- Mensagem caso não exista clientes ou não encontrado  -->
 				<h3 class="text-center text-primary">Não encontrada, contactar o suporte!</h3>
 			<?php endif; ?>
+			</fieldset> 
             </div>
             </div>
           </div>

@@ -78,7 +78,7 @@ require 'funcoes/check.php';
 			<fieldset>
 			<legend><h1>Cadastro de Produtos</h1></legend>
 			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+			<form action="action_cadastro.php" method="post" id="form-contato" enctype="multipart/form-data">
 				<div class="row">
 					<label for="nome">Selecionar Foto</label>
 			      	<div class="col-md-2">
@@ -127,9 +127,21 @@ require 'funcoes/check.php';
  			<fieldset>
 			<legend><h1>Cadastro de Fornecedores</h1></legend>
 			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+			<form action="action_cadastro.php" method="post" id="form-contato" enctype="multipart/form-data">
 
 			    <div class="form-group">
+			      <label for="nome">Código ERP do Fornecedor</label>
+			      <input type="text" class="form-control" id="codigoerp_fornecedor" name="codigoerp_fornecedor" placeholder="Infome o código do ERP do seu Fornecedor.">
+			      <span class="msg-erro msg-nome"></span>
+			    </div>
+
+			  	<div class="form-group">
+			      <label for="nome">CNPJ do Fornecedor (Opcional)</label>
+			      <input type="text" class="form-control" id="cnpj_fornecedor" name="cnpj_fornecedor" placeholder="Infome o Fornecedor.">
+			      <span class="msg-erro msg-nome"></span>
+			    </div>
+
+				<div class="form-group">
 			      <label for="nome">Fornecedor</label>
 			      <input type="text" class="form-control" id="descricao_fornecedor" name="descricao_fornecedor" placeholder="Infome o Fornecedor.">
 			      <span class="msg-erro msg-nome"></span>
@@ -156,7 +168,7 @@ require 'funcoes/check.php';
 			<fieldset>
 			<legend><h1>Cadastro de Tipos de Avarias</h1></legend>
 			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+			<form action="action_cadastro.php" method="post" id="form-contato" enctype="multipart/form-data">
 
 			    <div class="form-group">
 			      <label for="nome">Tipos de Avaria</label>
@@ -175,7 +187,7 @@ require 'funcoes/check.php';
               <fieldset>
 			<legend><h1>Cadastro de Estoques</h1></legend>
 			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+			<form action="action_cadastro.php" method="post" id="form-contato" enctype="multipart/form-data">
 
 			    <div class="form-group">
 			      <label for="nome">Local de Estoque</label>
