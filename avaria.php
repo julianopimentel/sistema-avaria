@@ -4,9 +4,67 @@ session_start();
 require_once 'funcoes/init.php';
 require 'funcoes/check.php';
 
-?>
-<?php
-require 'funcoes/init.php';
+ /* Constantes de configuração */  
+ define('QTDE_REGISTROS', 5);   
+ define('RANGE_PAGINAS', 1);   
+   
+ /* Recebe o número da página via parâmetro na URL */  
+ $pagina_atual = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;   
+   
+ /* Calcula a linha inicial da consulta */  
+ $linha_inicial = ($pagina_atual -1) * QTDE_REGISTROS;  
+
+	 /* Conta quantos registos existem na tabela */  
+
+	$PDO = db_connect();
+	$sqlContador = "SELECT COUNT(*) AS total_registros FROM avaria";   
+ 	$stmt = $PDO->prepare($sqlContador);   
+ 	$stmt->execute();   
+ 	$valor = $stmt->fetch(PDO::FETCH_OBJ); 
+
+ 	/* Idêntifica a primeira página */  
+ $primeira_pagina = 1;   
+   
+ /* Cálcula qual será a última página */  
+ $ultima_pagina  = ceil($valor->total_registros / QTDE_REGISTROS);   
+   
+ /* Cálcula qual será a página anterior em relação a página atual em exibição */   
+ $pagina_anterior = ($pagina_atual > 1) ? $pagina_atual -1 : 0 ;   
+   
+ /* Cálcula qual será a pŕoxima página em relação a página atual em exibição */   
+ $proxima_pagina = ($pagina_atual < $ultima_pagina) ? $pagina_atual +1 : 0 ;  
+   
+ /* Cálcula qual será a página inicial do nosso range */    
+ $range_inicial  = (($pagina_atual - RANGE_PAGINAS) >= 1) ? $pagina_atual - RANGE_PAGINAS : 1 ;   
+   
+ /* Cálcula qual será a página final do nosso range */    
+ $range_final   = (($pagina_atual + RANGE_PAGINAS) <= $ultima_pagina ) ? $pagina_atual + RANGE_PAGINAS : $ultima_pagina ;   
+   
+ /* Verifica se vai exibir o botão "Primeiro" e "Pŕoximo" */   
+ $exibir_botao_inicio = ($range_inicial < $pagina_atual) ? 'mostrar' : 'esconder'; 
+   
+ /* Verifica se vai exibir o botão "Anterior" e "Último" */   
+ $exibir_botao_final = ($range_final > $pagina_atual) ? 'mostrar' : 'esconder';  
+
+
+$termo = (isset($_GET['termo'])) ? $_GET['termo'] : '';
+
+// Verifica se o termo de pesquisa está vazio, se estiver executa uma consulta completa
+if (empty($termo)):
+
+	$PDO = db_connect();
+	$sql = 'SELECT * FROM avaria
+			INNER JOIN produto ON avaria.cod_produto = produto.codigo_erp
+			INNER JOIN tipo_avaria ON avaria.cod_tipoavaria = tipo_avaria.id_tipoavaria
+			INNER JOIN empresa ON avaria.cod_empresa = empresa.id_empresa
+			INNER JOIN estoque ON avaria.cod_estoque = estoque.id_estoque
+			INNER JOIN situacao_avaria ON avaria.cod_situacao = situacao_avaria.id_situacao
+			INNER JOIN login ON avaria.cadastro_avaria_cod = login.id_login';
+	$stmt = $PDO->prepare($sql);
+	$stmt->execute();
+	$avaria = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+else:
 
 	$PDO = db_connect();
 	$sql = 'SELECT * FROM avaria
@@ -24,8 +82,16 @@ require 'funcoes/init.php';
 			nome LIKE :nome OR 
 			descricao_tipoavaria LIKE :descricao_tipoavaria';
 	$stmt = $PDO->prepare($sql);
+	$stmt->bindValue(':codigo_erp', $termo.'%');
+	$stmt->bindValue(':descricao_produto', $termo.'%');
+	$stmt->bindValue(':descricao_estoque', $termo.'%');
+	$stmt->bindValue(':descricao_empresa', $termo.'%');
+	$stmt->bindValue(':descricao_situacao', $termo.'%');
+	$stmt->bindValue(':nome', $termo.'%');
+	$stmt->bindValue(':descricao_tipoavaria', $termo.'%');
 	$stmt->execute();
-	$clientes = $stmt->fetchAll(PDO::FETCH_OBJ);
+	$avaria = $stmt->fetchAll(PDO::FETCH_OBJ);
+endif;
 ?>
 
 
@@ -64,7 +130,7 @@ require 'funcoes/init.php';
             <a class="nav-link" href="avaria.php">Avarias<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cadastro.php">Cadastro</a>
+            <a class="nav-link" href="produto.php">Produto</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="relatorios.php">Relatórios</a>
@@ -76,16 +142,19 @@ require 'funcoes/init.php';
             <a class="nav-link" href="logout.php">Sair</a>
           </li>
         </ul>
+          <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" id="termo" name="termo" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
     </nav>
 
     <div class="nav-scroller bg-white shadow-sm">
       <nav class="nav nav-underline">
         <a class="nav-link active" href="home.php">Dashboard</a>
-        <a class="nav-link" data-toggle="tab" href="#empresa" role="empresa">Empresa</a>
-        <a class="nav-link" data-toggle="tab" href="#sistema" role="sistema">Sistema</a>
-        <a class="nav-link" data-toggle="tab" href="#usuario" role="usuario">Usuários</a>
-        <a class="nav-link" data-toggle="tab" href="#permissoes" role="permissoes">Permissões</a>
+        <a class="nav-link" data-toggle="tab" href="#consulta" role="consulta">Consulta</a>
+        <a class="nav-link" data-toggle="tab" href="#cadastro" role="cadastro">Cadastro</a>
+        <a class="nav-link" data-toggle="tab" href="#permissoes" role="permissoes">Baixa</a>
       </nav>
     </div>
 
@@ -93,14 +162,73 @@ require 'funcoes/init.php';
       <div class="my-5 p-5 bg-white rounded shadow-sm">
        <div class="col">
           <div class="tab-content" id="nav-tabContent">
-           	
-            <div class="tab-pane fade show active" id="produto" role="tabpanel" aria-labelledby="list-home-list">
 
-		<fieldset>
 
+            <div class="tab-pane fade show active" id="consulta" role="tabpanel" aria-labelledby="list-home-list">
+<fieldset>
 			<!-- Cabeçalho da Listagem -->
-			<legend><h1>Empresas</h1></legend>
-				<?php if(!empty($clientes)):?>
+			<legend><h1>Consulta</h1></legend>
+  <?php if (!empty($avaria)): ?>  
+     <table class="table table-striped table-bordered">    
+     <thead>    
+       <tr class='active'>    
+						<th>Código ERP</th>
+						<th>Descrição</th>
+						<th>Código de Barra</th>
+						<th>Situação</th>
+						<th>Cadastro</th>
+						<th>Local</th>
+						<th>Tipo</th>
+						<th>Data</th>
+						<th>Ação</th>
+       </tr>    
+     </thead>    
+     <tbody>    
+       <?php foreach($avaria as $dados):?>   
+       <tr>    
+							<td><?=$dados->codigo_erp?></td>
+							<td><?=$dados->descricao_produto?></td>
+							<td><?=$dados->codigobarra?></td>
+							<td><?=$dados->descricao_situacao?></td>
+							<td><?=$dados->nome?></td>
+							<td><?=$dados->descricao_estoque?></td>
+							<td><?=$dados->descricao_tipoavaria?></td>
+							<td><?=$dados->cadastro_avaria_date?></td>
+							<td>
+							<a href='editar.php?id=<?=$avaria->id_login?>' class="btn btn-primary">Editar</a>
+							</td>  
+       </tr>    
+       <?php endforeach; ?>   
+     </tbody>    
+     </table>    
+     
+     <div class='box-paginacao'>     
+       <a class='box-navegacao <?=$exibir_botao_inicio?>' href="settings.php?page=<?=$primeira_pagina?>" title="Primeira Página">Primeira</a>    
+       <a class='box-navegacao <?=$exibir_botao_inicio?>' href="settings.php?page=<?=$pagina_anterior?>" title="Página Anterior">Anterior</a>     
+   
+      <?php  
+      /* Loop para montar a páginação central com os números */   
+      for ($i=$range_inicial; $i <= $range_final; $i++):   
+        $destaque = ($i == $pagina_atual) ? 'destaque' : '' ;  
+        ?>   
+        <a class='box-numero <?=$destaque?>' href="settings.php?page=<?=$i?>"><?=$i?></a>    
+      <?php endfor; ?>    
+   
+       <a class='box-navegacao <?=$exibir_botao_final?>' href="settings.php?page=<?=$proxima_pagina?>" title="Próxima Página">Próxima</a>    
+       <a class='box-navegacao <?=$exibir_botao_final?>' href="settings.php?page=<?=$ultima_pagina?>" title="Última Página">Último</a>    
+     </div>   
+    <?php else: ?>   
+	<!-- Mensagem caso não exista clientes ou não encontrado  -->
+	<h3 class="text-center text-primary">Não encontrada, contactar o suporte!</h3>
+    <?php endif; ?> 
+			
+            </div>
+
+        
+        <div class="tab-pane fade" id="cadastro" role="tabpanel" aria-labelledby="list-profile-list">
+ 			<fieldset>
+			<legend><h1>Sistema</h1></legend>
+				<?php if(!empty($avaria)):?>
 
 				<!-- Tabela de Clientes -->
 				<table class="table table-striped">
@@ -115,18 +243,18 @@ require 'funcoes/init.php';
 						<th>Data</th>
 						<th>Ação</th>
 					</tr>
-					<?php foreach($clientes as $cliente):?>
+					<?php foreach($avaria as $avaria):?>
 						<tr>
-							<td><?=$cliente->codigo_erp?></td>
-							<td><?=$cliente->descricao_produto?></td>
-							<td><?=$cliente->codigobarra?></td>
-							<td><?=$cliente->descricao_situacao?></td>
-							<td><?=$cliente->nome?></td>
-							<td><?=$cliente->descricao_estoque?></td>
-							<td><?=$cliente->descricao_tipoavaria?></td>
-							<td><?=$cliente->cadastro_avaria_date?></td>
+							<td><?=$avaria->codigo_erp?></td>
+							<td><?=$avaria->descricao_produto?></td>
+							<td><?=$avaria->codigobarra?></td>
+							<td><?=$avaria->descricao_situacao?></td>
+							<td><?=$avaria->nome?></td>
+							<td><?=$avaria->descricao_estoque?></td>
+							<td><?=$avaria->descricao_tipoavaria?></td>
+							<td><?=$avaria->cadastro_avaria_date?></td>
 							<td>
-								<a href='info.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">+Info</a>
+								<a href='info.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Info</a>
 								<a href='editar.php?id=<?=$cliente->cod_erp?>' class="btn btn-primary">Editar</a>
 							</td>
 						</tr>	
@@ -139,87 +267,7 @@ require 'funcoes/init.php';
 				<h3 class="text-center text-primary">Avaria não encontrada, tente novamente!</h3>
 			<?php endif; ?>
 		</fieldset>
-
-
-            </div>
-
-            <div class="tab-pane fade" id="fornecedor" role="tabpanel" aria-labelledby="list-profile-list">
- 			<fieldset>
-			<legend><h1>Cadastro de Fornecedores</h1></legend>
-			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
-
-			    <div class="form-group">
-			      <label for="nome">Fornecedor</label>
-			      <input type="text" class="form-control" id="descricao_fornecedor" name="descricao_fornecedor" placeholder="Infome o Fornecedor.">
-			      <span class="msg-erro msg-nome"></span>
-			    </div>
-
-			    <div class="form-group">
-			      <label for="status">Status</label>
-			      <select class="form-control" name="status" id="status">
-				    <option value="">Selecione o Status</option>
-				    <option value="Ativo">Ativo</option>
-				    <option value="Inativo">Inativo</option>
-				  </select>
-				  <span class="msg-erro msg-status"></span>
-			    </div>
-
-			    <input type="hidden" name="acao" value="incluir_fornecedor">
-			    <button type="submit" class="btn btn-primary" id="botao"> 
-			      Gravar
-			    </button>
-			</form>
-		</fieldset>
-            </div>
-            <div class="tab-pane fade" id="tipoavaria" role="tabpanel" aria-labelledby="list-messages-list">
-			<fieldset>
-			<legend><h1>Cadastro de Tipos de Avarias</h1></legend>
-			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
-
-			    <div class="form-group">
-			      <label for="nome">Tipos de Avaria</label>
-			      <input type="text" class="form-control" id="descricao_tipoavaria" name="descricao_tipoavaria" placeholder="Infome o novo tipo de Avaria.">
-			      <span class="msg-erro msg-nome"></span>
-			    </div>
-
-			    <input type="hidden" name="acao" value="incluir_tipoavaria">
-			    <button type="submit" class="btn btn-primary" id="botao"> 
-			      Gravar
-			    </button>
-			</form>
-		</fieldset>
-            </div>
-            <div class="tab-pane fade" id="estoque" role="tabpanel" aria-labelledby="list-settings-list">
-              <fieldset>
-			<legend><h1>Cadastro de Estoques</h1></legend>
-			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
-
-			    <div class="form-group">
-			      <label for="nome">Local de Estoque</label>
-			      <input type="text" class="form-control" id="descricao_estoque" name="descricao_estoque" placeholder="Infome o novo Local de Estoque.">
-			      <span class="msg-erro msg-nome"></span>
-			    </div>
-
-			    <div class="form-group">
-			      <label for="status">Status</label>
-			      <select class="form-control" name="status" id="status">
-				    <option value="">Selecione o Status</option>
-				    <option value="Ativo">Ativo</option>
-				    <option value="Inativo">Inativo</option>
-				  </select>
-				  <span class="msg-erro msg-status"></span>
-			    </div>
-
-			    <input type="hidden" name="acao" value="incluir_estoque">
-			    <button type="submit" class="btn btn-primary" id="botao"> 
-			      Gravar
-			    </button>
-			</form>
-			</fieldset>
-            </div>
+            </div>  
             </div>
           </div>
         </div>

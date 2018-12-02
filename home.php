@@ -80,7 +80,7 @@ require 'funcoes/check.php';
             <a class="nav-link" href="avaria.php">Avarias</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="cadastro.php">Cadastro</a>
+            <a class="nav-link" href="produto.php">Produto</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="relatorios.php">Relatórios</a>

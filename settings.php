@@ -14,15 +14,29 @@ require 'funcoes/check.php';
  /* Calcula a linha inicial da consulta */  
  $linha_inicial = ($pagina_atual -1) * QTDE_REGISTROS;  
 
-
+ //Informações da empresa
 	$PDO = db_connect();
 	$sql = 'SELECT * FROM empresa';
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
 	$empresa = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-	$PDO = db_connect();
- 	/* Instrução de consulta para paginação com MySQL */  
+  //informações de tipo de avaria
+  $PDO = db_connect();
+  $sql = 'SELECT * FROM tipo_avaria WHERE situacao_tipoavaria = "Ativo"';
+  $stmt = $PDO->prepare($sql);
+  $stmt->execute();
+  $tipo_avaria = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+  //informações estoque
+  $PDO = db_connect();
+  $sql = 'SELECT * FROM estoque WHERE situacao_estoque = "Ativo"';
+  $stmt = $PDO->prepare($sql);
+  $stmt->execute();
+  $estoque = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+	/* Instrução de consulta para paginação com MySQL */  
+  $PDO = db_connect();
  	$sql = "SELECT * FROM login LIMIT {$linha_inicial}, " . QTDE_REGISTROS;  
  	$stm = $PDO->prepare($sql);   
  	$stm->execute();   
@@ -96,7 +110,7 @@ require 'funcoes/check.php';
             <a class="nav-link" href="avaria.php">Avarias</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cadastro.php">Cadastro</a>
+            <a class="nav-link" href="produto.php">Produto</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="relatorios.php">Relatórios</a>
@@ -116,6 +130,8 @@ require 'funcoes/check.php';
       <nav class="nav nav-underline">
         <a class="nav-link active" href="home.php">Dashboard</a>
         <a class="nav-link" data-toggle="tab" href="#usuario" role="usuario">Usuários</a>
+        <a class="nav-link" data-toggle="tab" href="#tipoavaria" role="tipoavaria">Tipo de Avaria</a>
+        <a class="nav-link" data-toggle="tab" href="#estoque" role="estoque">Estoque</a>
         <a class="nav-link" data-toggle="tab" href="#sistema" role="sistema">Sistema</a>
         <a class="nav-link" data-toggle="tab" href="#empresa" role="empresa">Empresa</a>
       </nav>
@@ -125,12 +141,13 @@ require 'funcoes/check.php';
       <div class="my-5 p-5 bg-white rounded shadow-sm">
        <div class="col">
           <div class="tab-content" id="nav-tabContent">
-           	
-            <div class="tab-pane fade show active" id="usuario" role="tabpanel" aria-labelledby="list-home-list">
-<fieldset>
+
+                     	
+    <div class="tab-pane fade show active" id="usuario" role="tabpanel" aria-labelledby="list-home-list">     
+    <fieldset>
 			<!-- Cabeçalho da Listagem -->
 			<legend><h1>Usuários</h1></legend>
-  <?php if (!empty($dados)): ?>  
+      <?php if (!empty($dados)): ?>  
      <table class="table table-striped table-bordered">    
      <thead>    
        <tr class='active'>    
@@ -159,11 +176,9 @@ require 'funcoes/check.php';
        <?php endforeach; ?>   
      </tbody>    
      </table>    
-     
      <div class='box-paginacao'>     
        <a class='box-navegacao <?=$exibir_botao_inicio?>' href="settings.php?page=<?=$primeira_pagina?>" title="Primeira Página">Primeira</a>    
        <a class='box-navegacao <?=$exibir_botao_inicio?>' href="settings.php?page=<?=$pagina_anterior?>" title="Página Anterior">Anterior</a>     
-   
       <?php  
       /* Loop para montar a páginação central com os números */   
       for ($i=$range_inicial; $i <= $range_final; $i++):   
@@ -171,22 +186,76 @@ require 'funcoes/check.php';
         ?>   
         <a class='box-numero <?=$destaque?>' href="settings.php?page=<?=$i?>"><?=$i?></a>    
       <?php endfor; ?>    
-   
        <a class='box-navegacao <?=$exibir_botao_final?>' href="settings.php?page=<?=$proxima_pagina?>" title="Próxima Página">Próxima</a>    
        <a class='box-navegacao <?=$exibir_botao_final?>' href="settings.php?page=<?=$ultima_pagina?>" title="Última Página">Último</a>    
-     </div>   
+     </div> <br>
+<p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#cadastrousuario" aria-expanded="false" aria-controls="cadastrousuario">Cadastrar Usuário </button>
+</p>
+<div class="collapse" id="cadastrousuario">
+  <div class="card card-body">
+          <form action="funcoes/action_settings.php" method="post" id="form-contato" enctype="multipart/form-data">
+
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Colaborador.">
+            <span class="msg-erro msg-nome"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="nome">Sobrenome</label>
+            <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Sobrenome do Colaborador.">
+            <span class="msg-erro msg-nome"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="nome">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Infome o E-mail de Acesso.">
+            <span class="msg-erro msg-nome"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="nome">Senha</label>
+            <input type="password" class="form-control" id="senha" name="senha" placeholder="Infome uma senha.">
+            <span class="msg-erro msg-nome"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="status">Nível de Acesso (Consultar Manual)</label>
+            <select class="form-control" name="nivel" id="nivel">
+            <option value="">Selecione o Status</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+          <span class="msg-erro msg-status"></span>
+          </div>
+            <div class="form-group">
+            <label for="status">Situação (Opcional)</label>
+            <select class="form-control" name="status" id="status">
+            <option value="">Selecione o Status</option>
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+          </div>
+          <input type="hidden" name="acao" value="incluir_usuario">
+          <button type="submit" class="btn btn-primary" id="botao"> 
+            Gravar
+          </button>
+      </form>
+  </div>
+</div>
     <?php else: ?>   
 	<!-- Mensagem caso não exista clientes ou não encontrado  -->
 	<h3 class="text-center text-primary">Não encontrada, contactar o suporte!</h3>
     <?php endif; ?> 
-			
-            </div>
+		 </div>
+        
 
-            <div class="tab-pane fade" id="sistema" role="tabpanel" aria-labelledby="list-profile-list">
+        <div class="tab-pane fade" id="sistema" role="tabpanel" aria-labelledby="list-profile-list">
  			<fieldset>
 			<legend><h1>Sistema</h1></legend>
 			
-			<form action="action_cliente.php" method="post" id="form-contato" enctype="multipart/form-data">
+			<form action="funcoes/action_settings.php" method="post" id="form-contato" enctype="multipart/form-data">
 
 			    <div class="form-group">
 			      <label for="status">Envio por E-mail - Relatório</label>
@@ -260,6 +329,120 @@ require 'funcoes/check.php';
 			<?php endif; ?>
 			</fieldset> 
             </div>
+
+            <div class="tab-pane fade" id="tipoavaria" role="tabpanel" aria-labelledby="list-messages-list">
+      <fieldset>
+      <legend><h1>Tipos de Avarias</h1></legend>
+    
+      <?php if(!empty($tipo_avaria)):?>
+        <!-- Tabela de Clientes -->
+        <table class="table table-striped table-bordered">
+          <tr class='active'>
+            <th>ID</th>
+            <th>Local de Estoque</th>
+            <th>Situação</th>
+          </tr>
+               <tbody>   
+          <?php foreach($tipo_avaria as $tipo_avaria):?>
+            <tr>
+              <td><?=$tipo_avaria->id_tipoavaria?></td>
+              <td><?=$tipo_avaria->descricao_tipoavaria?></td>
+              <td><?=$tipo_avaria->situacao_tipoavaria?></td>
+            </tr> 
+          <?php endforeach;?>
+        </tbody>
+        </table>
+        <p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tipo_avaria" aria-expanded="false" aria-controls="tipo_avaria">Cadastrar Tipo de Avaria</button>
+</p>
+<div class="collapse" id="tipo_avaria">
+  <div class="card card-body">
+          <form action="funcoes/action_settings.php" method="post" id="form-contato" enctype="multipart/form-data">
+
+          <div class="form-group">
+            <label for="nome">Tipos de Avaria</label>
+            <input type="text" class="form-control" id="descricao_tipoavaria" name="descricao_tipoavaria" placeholder="Infome o novo tipo de Avaria.">
+            <span class="msg-erro msg-nome"></span>
+          </div>
+            <div class="form-group">
+            <label for="status">Situação (Opcional)</label>
+            <select class="form-control" name="status" id="status">
+            <option value="">Selecione o Status</option>
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+          </div>
+          <input type="hidden" name="acao" value="incluir_tipoavaria">
+          <button type="submit" class="btn btn-primary" id="botao">Gravar</button>
+           </form>
+            </div>
+        <?php else: ?>
+        <!-- Mensagem caso não exista clientes ou não encontrado  -->
+        <h3 class="text-center text-primary">Não encontrada, contactar o suporte!</h3>
+      <?php endif; ?>
+      </fieldset> 
+            </div>
+            
+
+        <!--Comeca o form usado -->
+       <div class="tab-pane fade" id="estoque" role="tabpanel" aria-labelledby="list-messages-list">
+      <fieldset>
+      <legend><h1>Locais de Estoques</h1></legend>
+    
+      <?php if(!empty($estoque)):?>
+        <!-- Tabela de Clientes -->
+        <table class="table table-striped table-bordered">
+          <tr class='active'>
+            <th>ID</th>
+            <th>Local de Estoque</th>
+            <th>Situação</th>
+          </tr>
+               <tbody>   
+          <?php foreach($estoque as $estoque):?>
+            <tr>
+              <td><?=$estoque->id_estoque?></td>
+              <td><?=$estoque->descricao_estoque?></td>
+              <td><?=$estoque->situacao_estoque?></td>
+            </tr> 
+          <?php endforeach;?>
+        </tbody>
+        </table>
+        <p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tipo_avaria" aria-expanded="false" aria-controls="tipo_avaria">Cadastrar Local de Estoque</button>
+</p>
+<div class="collapse" id="tipo_avaria">
+  <div class="card card-body">
+      
+        <form action="funcoes/action_settings.php" method="post" id="form-contato" enctype="multipart/form-data">
+
+          <div class="form-group">
+            <label for="nome">Local de Estoque</label>
+            <input type="text" class="form-control" id="descricao_estoque" name="descricao_estoque" placeholder="Infome o novo Local de Estoque.">
+            <span class="msg-erro msg-nome"></span>
+          </div>
+
+           <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" name="status" id="status">
+            <option value="">Selecione o Status</option>
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+          <span class="msg-erro msg-status"></span>
+          </div>
+
+           <input type="hidden" name="acao" value="incluir_estoque">
+          <button type="submit" class="btn btn-primary" id="botao">Gravar</button>
+           </form>
+            </div>
+        <?php else: ?>
+        <!-- Mensagem caso não exista clientes ou não encontrado  -->
+        <h3 class="text-center text-primary">Não encontrada, contactar o suporte!</h3>
+      <?php endif; ?>
+      </fieldset> 
+            </div>
+
+                <!--Termina  o form usado -->
             </div>
           </div>
         </div>

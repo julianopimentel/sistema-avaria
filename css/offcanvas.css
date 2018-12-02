@@ -36,6 +36,10 @@ body {
   overflow-y: hidden;
 }
 
+.botao{
+float:right
+}
+
 .nav-scroller .nav {
   display: -ms-flexbox;
   display: flex;
